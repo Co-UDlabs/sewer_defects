@@ -153,3 +153,10 @@ weights/
 *_web_model/
 *_openvino_model/
 *_paddle_model/
+
+
+
+
+# changes for coudlabs -------------------------------------------------------------------------------------------------
+# ignore data folder
+ultralytics/datasets/

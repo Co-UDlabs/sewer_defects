@@ -163,3 +163,6 @@ coudlabs/data/*
 # except for yaml files
 !.gitignore
 !*.yaml
+
+#ignore predictions
+coudlabs/prediction

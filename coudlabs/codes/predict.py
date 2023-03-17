@@ -3,7 +3,7 @@ import cv2
 import os
 
 # best model and data paths
-bestModelPath = "C:\Ehsan\\sewer_defects\\coudlabs\\runs\\detect\\train2\\weights\\best.pt"
+bestModelPath = "C:\\Ehsan\\sewer_defects\\coudlabs\\runs\\detect\\train2\\weights\\best.pt"
 imageFolder = "C:\\Ehsan\\sewer_defects\\coudlabs\\prediction\\coudlabs01\\"
 
 # load model

@@ -158,5 +158,8 @@ weights/
 
 
 # changes for coudlabs -------------------------------------------------------------------------------------------------
-# ignore data subfolders
-coudlabs/data/*/
+# ignore data
+coudlabs/data/labels/test/*.*
+# except for yaml files
+coudlabs/codes/train.py
+

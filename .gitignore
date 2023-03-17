@@ -159,4 +159,4 @@ weights/
 
 # changes for coudlabs -------------------------------------------------------------------------------------------------
 # ignore data subfolders
-ultralytics/datasets/*/
+coudlabs/data/*/

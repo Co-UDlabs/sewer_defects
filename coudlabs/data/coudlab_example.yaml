@@ -2,7 +2,7 @@
 # example1 dataset
 # Example usage: yolo train data=coudlab_example.yaml
 
-path: C:\Ehsan\sewer_defects\ultralytics\datasets\coudlab_example  # dataset root dir
+path: C:\Ehsan\sewer_defects\coudlabs\data\coudlab_example  # dataset root dir
 train: images/training  # train images (relative to 'path')
 val: images/validation  # val images (relative to 'path')
 test: images/test # test images (optional)

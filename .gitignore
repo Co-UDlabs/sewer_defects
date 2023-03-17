@@ -159,7 +159,7 @@ weights/
 
 # changes for coudlabs -------------------------------------------------------------------------------------------------
 # ignore data
-coudlabs/data/labels/test/*.*
+coudlabs/data/*
 # except for yaml files
-coudlabs/codes/train.py
-
+!.gitignore
+!*.yaml

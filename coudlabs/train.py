@@ -5,10 +5,9 @@
 import ultralytics
 ultralytics.checks()
 from ultralytics import YOLO
-from tvp import train, validate
 
 # data
-trainingDataPath = "C:\\Ehsan\\sewer_defects\\ultralytics\\ultralytics\\datasets\\coudlab_example.yaml"
+trainingDataPath = "C:\\Ehsan\\sewer_defects\\ultralytics\\datasets\\coudlab_example.yaml"
 
 # load a model
 # model = YOLO("yolov8n.yaml")  # build a new model from scratch

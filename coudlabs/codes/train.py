@@ -14,7 +14,7 @@ dataPath = "C:\\Ehsan\\sewer_defects\\coudlabs\\data\\coudlab_example.yaml"
 model = YOLO("yolov8n.pt")  # load a pretrained model (recommended for training)
 
 # train model
-model.train(data=dataPath, epochs=5, imgsz=352)
+model.train(data=dataPath, epochs=50, imgsz=352)
 
 # evaluate model performance on the validation set
 val_metrics = model.val() 

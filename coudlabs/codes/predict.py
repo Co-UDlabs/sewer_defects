@@ -1,4 +1,5 @@
 from ultralytics import YOLO
+from ultralytics.yolo.engine.results import Boxes
 import cv2
 import os
 
@@ -15,3 +16,9 @@ for filename in os.listdir(imageFolder):
     if img is not None:
         # get result
         result = bestModel(img, save=True)
+        # get size of bounding box
+        # to get all box information use "box = result[0].boxes.numpy()""   
+        # for properties see ..\ultralytics\yolo\engine\results.py lines 170 to 178
+        # size of bounding box relative to image size
+        xyxyn = result[0].boxes.numpy().xyxyn
+

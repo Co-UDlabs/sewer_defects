@@ -7,7 +7,7 @@ ultralytics.checks()
 from ultralytics import YOLO
 
 # data
-dataPath = "C:\\Ehsan\\sewer_defects\\coudlabs\\data\\coudlab_example.yaml"
+dataPath = "C:/Ehsan/sewer_defects/coudlabs/data/test_01.yaml"
 
 # load a model
 # model = YOLO("yolov8n.yaml")  # build a new model from scratch

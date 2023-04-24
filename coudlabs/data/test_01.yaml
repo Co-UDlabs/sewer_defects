@@ -1,0 +1,23 @@
+# Ultralytics YOLO 🚀, GPL-3.0 license
+# example1 dataset
+# Example usage: yolo train data=coudlab_example.yaml
+
+path: C:/Ehsan/sewer_defects/coudlabs/data/test_01  # dataset root dir
+train: images/training  # train images (relative to 'path')
+val: images/validation  # val images (relative to 'path')
+test: images/test # test images (optional)
+
+# Classes
+names:
+  0: O
+  1: IP
+  2: IR
+  3: J
+  4: CL
+  5: CC
+  6: DH
+  7: DS
+  8: C
+
+# Download script/URL (optional)
+# download: https://xx.zip

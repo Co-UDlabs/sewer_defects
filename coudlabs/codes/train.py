@@ -7,14 +7,14 @@ ultralytics.checks()
 from ultralytics import YOLO
 
 # data
-dataPath = "C:/Ehsan/sewer_defects/coudlabs/data/test_01.yaml"
+dataPath = "C:/Ehsan/sewer_defects/coudlabs/data/data.yaml"
 
 # load a model
 # model = YOLO("yolov8n.yaml")  # build a new model from scratch
 model = YOLO("yolov8n.pt")  # load a pretrained model (recommended for training)
 
 # train model
-model.train(data=dataPath, epochs=100, imgsz=352)
+model.train(data=dataPath, epochs=30, imgsz=352)
 
 # evaluate model performance on the validation set
 val_metrics = model.val() 

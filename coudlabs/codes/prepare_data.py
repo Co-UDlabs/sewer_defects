@@ -2,15 +2,19 @@ import os
 import glob
 import random
 import shutil
+from PIL import Image
 
 # name of dataset
-data_name = "data_01"
+data_name = "d1"
 
 # Set the paths for the source folder and the three destination folders
 source_path = 'C:/Ehsan/sewer_data/labelled images'
 
 # file extensions
 extensions = ["png", "jpg", "tif", "bmp"]
+
+# convert to grey? "y" or "n"
+cl2gry = "y"
 
 # Set the percentages for each subset (should add up to 100)
 subset1_percent = 70
@@ -37,9 +41,6 @@ image_list = []
 for ext in extensions:
     image_list.extend(glob.glob(os.path.join(source_path, f'*.{ext}')))
 
-# File names
-file_names = [os.path.splitext(file)[0] for file in image_list]
-
 # Calculate the number of files for each subset based on the percentages
 nsub1 = int(len(image_list) * subset1_percent / 100)
 nsub2 = int(len(image_list) * subset2_percent / 100)
@@ -51,20 +52,31 @@ files_subset1 = image_list[0:nsub1]
 files_subset2 = image_list[nsub1:nsub1+nsub2]
 files_subset3 = image_list[nsub1+nsub2:nsub1+nsub2+nsub3]
 
-# Function to copy images and labels to the destination folders
-def copy_files(image_files,image_folder,label_folder):
-    missing_text_files = []
-    for file in image_files:
-        shutil.copy(os.path.join(source_path, file), image_folder)
-        text_file = os.path.splitext(file)[0] + ".txt"
-        if os.path.isfile(os.path.join(source_path, text_file)):
-            shutil.copy(os.path.join(source_path, text_file), label_folder)
+# Function to convert images into grey and then 
+# copy images and labels to the destination folders
+def process_file(image_path,image_destination,label_destination):
+    missing_label_files = []
+    for file in image_path:
+        # folder path, file name and file extension
+        folder, file_name_with_extension = os.path.split(file)
+        file_name, file_extension = os.path.splitext(file_name_with_extension)
+        # convert image to grey?
+        if cl2gry == 'y':  # convert
+            image = Image.open(file)
+            image = image.convert('L')
+            image.save(os.path.join(image_destination, file_name + file_extension))
+        else:   # just copy the original image
+            shutil.copy(file, image_destination)
+        # label file
+        label_file = os.path.join(folder, file_name + ".txt")
+        if os.path.isfile(label_file):
+            shutil.copy(label_file, label_destination)
         else:
-            missing_text_files.append(text_file)
-    if missing_text_files:
-        raise Exception("ERROR: the following label files are missing: ", missing_text_files)
+            missing_label_files.append(label_file)
+    if missing_label_files:
+        raise Exception("ERROR: the following label files are missing: ", missing_label_files)
 
 # Copy files
-copy_files(files_subset1,train_images,train_labels)
-copy_files(files_subset2,valid_images,valid_labels)
-copy_files(files_subset3,test_images,test_labels)
+process_file(files_subset1,train_images,train_labels)
+process_file(files_subset2,valid_images,valid_labels)
+process_file(files_subset3,test_images,test_labels)

@@ -2,15 +2,22 @@
 # example1 dataset
 # Example usage: yolo train data=coudlab_example.yaml
 
-path: C:\Ehsan\sewer_defects\coudlabs\data\coudlab_example  # dataset root dir
+path: C:/Ehsan/sewer_defects/coudlabs/data/d1  # dataset root dir
 train: images/training  # train images (relative to 'path')
 val: images/validation  # val images (relative to 'path')
 test: images/test # test images (optional)
 
 # Classes
 names:
-  0: joint
-  1: obstacle
+  0: O
+  1: IP
+  2: IR
+  3: J
+  4: CL
+  5: CC
+  6: DH
+  7: DS
+  8: C
 
 # Download script/URL (optional)
 # download: https://xx.zip

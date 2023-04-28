@@ -42,11 +42,11 @@ image_list = []
 for ext in extensions:
     image_list.extend(glob.glob(os.path.join(image_path, f'*.{ext}')))
 
-# write list of files in a text file
+# Write list of files into a file
 listname = os.path.join(data_dir,'file_list.csv')
-with open(listname, mode="w") as outfile:  # also, tried mode="rb"
-    for s in image_list:
-        outfile.write("%s\n" % s)
+with open(listname, mode="w") as outfile:
+    for s in sorted(image_list):
+        outfile.write("%s\n" %s)
 
 # Label file column names
 colnames = ["label", "xc", "yc", "w", "h"]

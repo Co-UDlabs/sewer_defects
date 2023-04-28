@@ -12,7 +12,7 @@ data_dir = "C:\Ehsan\sewer_data"
 extensions = ["png", "jpg", "tif", "bmp"]
 
 # Label names
-text_file = open(os.path.join(data_dir,"label_names.txt"), "r")
+text_file = open(os.path.join(data_dir,"label_names_new.txt"), "r")
 label_ids = text_file.read().split('\n')
 print("Label IDs:")
 print(label_ids)

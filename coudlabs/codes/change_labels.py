@@ -1,3 +1,20 @@
+'''
+File name: change_labels.py
+Author: Ehsan Kazemi
+Date created: Apr 2023
+Date last modified: 28 Apr 2023
+-------------------------------------------------------------------------\
+ This code searches through all the text files in the image data folder, /
+ replaces the existing label numbers (present in the first column in the \
+ label text files) with the new numbers that associate with the new      /
+ label names, and writes the updated data to the text files.             \
+ Be careful! This code overwrites the existing text files. If you run it /
+ you will cjange the label numbers permanemtly. Therefore, make sure a   \
+ copy of the label text files is backed up already.                      /
+-------------------------------------------------------------------------\
+'''
+
+# Import dependencies
 import os
 
 # Define the folder path and the numbers to replace

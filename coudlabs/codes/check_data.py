@@ -1,10 +1,26 @@
+'''
+File name: change_labels.py
+Author: Ehsan Kazemi
+Date created: Apr 2023
+Date last modified: 28 Apr 2023
+-------------------------------------------------------------------------\
+ This code reads data from label text files in the image data directory  /
+ and draws bounding boxes on the images and save the new images in       \
+ a folder named "show labels".                                           /
+-------------------------------------------------------------------------\
+'''
+
+# Import dependencies
 import cv2
 import os
 import glob
 import pandas as pd
 import shutil
-from PIL import ImageColor
-
+color_dict = {'red':(255, 0, 0),'green':(0, 255, 0),'blue':(0, 0, 255),'turquoiseblue':(0,199,140),
+    'banana':(227,207,87),'yellow2':(238,238,0),'violetred1':(255,62,150),'violetred3':(205,50,120),
+    'violetred4':(139,34,82),'blue2':(0,0,238),'springgreen3':(0,139,69),'brown1':(255,64,64),
+    'brown4':(139,35,35),'burlywood1':(255,211,155),'sapgreen':(48,128,20),'deepskyblue1':(0,191,255),
+}
 # Data directory
 data_dir = "C:\Ehsan\sewer_data"
 
@@ -18,17 +34,17 @@ print("Label IDs:")
 print(label_ids)
 
 # Label colours
-color_names = ["red", "chartreuse", "forestgreen", "steelblue", \
-    "gold", "aqua", "orchid", "purple", "firebrick"]
+color_names = ["green", "turquoiseblue", "springgreen3", \
+    "banana", "deepskyblue1", "violetred1", "violetred3", "brown1"]
 label_colors = []
 for color in color_names:
-    label_colors.append(ImageColor.getrgb(color))
+    label_colors.append(color_dict.get(color.lower()))
 
 # plot specs
 line_thickness = 3
 font = cv2.FONT_HERSHEY_DUPLEX
-font_scale = 1.75
-font_thickness = 3
+font_scale = 1
+font_thickness = 2
 
 # Paths
 image_path = data_dir + "/labelled images"
@@ -57,7 +73,7 @@ for file in image_list:
     folder, file_name_with_extension = os.path.split(file)
     file_name, file_extension = os.path.splitext(file_name_with_extension)
     # print file name
-    print("\n" + file_name + file_extension + ":")
+    print(file_name + file_extension + ":", end="")
     # load the image
     img = cv2.imread(file)
     # Get the image's height and width
@@ -71,7 +87,7 @@ for file in image_list:
     # if there is at least one label:
     if not labels.empty:
         # print file contents
-        print(labels)
+        print(f' {len(labels.index)} {"label" if len(labels.index) == 1 else "labels"}')
         # read each label
         for i, row in labels.iterrows():
             # label number
@@ -98,4 +114,4 @@ for file in image_list:
             cv2.putText(img, label_ids[lid], (text_offset_x, text_offset_y + text_height), \
                 font, font_scale, (255, 255, 255), font_thickness, cv2.LINE_AA)
     # Save image
-    cv2.imwrite(os.path.join(write_path, file_name + " checked" + file_extension), img)
+    cv2.imwrite(os.path.join(write_path, file_name + " labels" + file_extension), img)

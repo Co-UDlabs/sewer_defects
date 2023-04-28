@@ -1,3 +1,16 @@
+'''
+File name: prepare_data.py
+Author: Ehsan Kazemi
+Date created: Apr 2023
+Date last modified: 28 Apr 2023
+-------------------------------------------------------------------------\
+ This code reads the data from the data folder and copy them into the    /
+ coudlabs training data folder in subfolders for training, validation    \
+ and test.                                                               /
+-------------------------------------------------------------------------\
+'''
+
+# Import dependencies
 import os
 import glob
 import random

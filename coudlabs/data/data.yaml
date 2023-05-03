@@ -9,15 +9,14 @@ test: images/test # test images (optional)
 
 # Classes
 names:
-  0: O
-  1: IP
-  2: IR
-  3: J
-  4: CL
-  5: CC
-  6: DH
-  7: DS
-  8: C
+  0: ObsPlc
+  1: ObsDep
+  2: ObsRot
+  3: Jnt
+  4: Crk
+  5: DmgHol
+  6: DmgSev
+  7: Cor
 
 # Download script/URL (optional)
 # download: https://xx.zip

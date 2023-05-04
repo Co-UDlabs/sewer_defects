@@ -165,4 +165,4 @@ coudlabs/data/*
 !*.yaml
 
 #ignore predictions
-coudlabs/prediction
+coudlabs/trained models/

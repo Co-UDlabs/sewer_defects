@@ -42,7 +42,7 @@ speed = 0
 
 while cap.isOpened():
     # Read a frame from the video
-    ret, frame = cap.read()
+    ret, frame = cap.read()  
 
     if ret:
         # Convert the frame to grayscale
@@ -59,6 +59,10 @@ while cap.isOpened():
 
         # Draw the contours on the original frame for visualization
         cv2.drawContours(frame, contours, -1, (0, 0, 255), 2)
+        
+        # Write `speed` value on the image
+        speed_text = f'Speed: {speed/1000:.2f} pixels per second'
+        cv2.putText(frame, speed_text, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
 
         # Calculate the position of the largest contour
         if contours:

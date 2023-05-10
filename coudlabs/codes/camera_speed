@@ -1,0 +1,95 @@
+'''
+File name: camera_speed.py
+Author: Ehsan Kazemi
+Date created: May 2023
+Date last modified: 10/05/2023
+-------------------------------------------------------------------------\
+In this code, we first read the video file using cv2.VideoCapture(). We  /
+then loop through each frame of the video and perform the following      \
+steps:                                                                   /
+..                                                                       \
+1- Convert the frame to grayscale and apply a Gaussian blur to reduce    /
+   noise.                                                                \
+2- Detect edges using the Canny edge detector.                           /
+3- Find contours in the edges image.                                     \
+4- Calculate the position of the largest contour using the cv2.moments() /
+   function.                                                             \
+5- Calculate the camera speed based on the change in position and time.  / 
+6- Display the frame and the estimated speed.                            \
+..                                                                       /
+Finally, we release the video capture and close the window. Note that    \
+the estimated speed is in pixels per second, so you may need to convert  /
+it to a real-world speed depending on the resolution and scale of the    \
+video.                                                                   /
+-------------------------------------------------------------------------\
+'''
+
+import cv2
+
+# data
+vid_dir = "C:/Users/ci1ek/Desktop/New folder/"
+vid_name = "SK43529101X_776a2dac-2ed8-4605-bc6d-a48daa4166d446f614cf-3741-4375-b930-afb386d669fa.mp4"
+
+# main loop
+
+# Read the video file
+cap = cv2.VideoCapture(vid_dir + vid_name)
+
+# Define variables for calculating camera speed
+prev_frame_time = 0
+prev_pos = None
+speed = 0
+
+while cap.isOpened():
+    # Read a frame from the video
+    ret, frame = cap.read()
+
+    if ret:
+        # Convert the frame to grayscale
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # Apply a Gaussian blur to reduce noise
+        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+
+        # Detect edges using the Canny edge detector
+        edges = cv2.Canny(blurred, 50, 150)
+
+        # Find contours in the edges image
+        contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        # Draw the contours on the original frame for visualization
+        cv2.drawContours(frame, contours, -1, (0, 0, 255), 2)
+
+        # Calculate the position of the largest contour
+        if contours:
+            largest_contour = max(contours, key=cv2.contourArea)
+            M = cv2.moments(largest_contour)
+            pos = (int(M['m10'] / M['m00']), int(M['m01'] / M['m00']))
+        else:
+            pos = None
+
+        # Calculate the camera speed based on the change in position and time
+        if prev_pos and pos:
+            curr_frame_time = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.0
+            time_diff = curr_frame_time - prev_frame_time
+            pos_diff = abs(pos[0] - prev_pos[0]) + abs(pos[1] - prev_pos[1])
+            speed = pos_diff / time_diff
+
+        # Update the previous position and time variables
+        prev_pos = pos
+        prev_frame_time = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.0
+
+        # Display the frame and the estimated speed
+        cv2.imshow('frame', frame)
+        print(f'Speed: {speed:.2f} pixels per second')
+
+        # Wait for a key press to exit
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    
+    else:
+        break
+
+# Release the video capture and close the window
+cap.release()
+cv2.destroyAllWindows()

@@ -2,9 +2,6 @@ import torch
 import cv2
 import numpy as np
 from monodepth2 import *
-import sys
-sys.path.insert(0, 'C:/Ehsan/sewer_defects/monodepth2/')
-from options import MonodepthOptions
 
 # Load video file
 data_path = "C:/Users/ci1ek/Desktop/test/video.mp4"

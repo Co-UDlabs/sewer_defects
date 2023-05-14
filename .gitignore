@@ -166,3 +166,4 @@ coudlabs/data/*
 
 #ignore predictions
 coudlabs/trained models/
+monodepth2/

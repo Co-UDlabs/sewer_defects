@@ -75,7 +75,8 @@ def camcalib_checkboard(CHECKERBOARD, sql, input_path):
 
     # Perform camera calibration by passing the value of above found out 3D points (threedpoints)
     # and its corresponding pixel coordinates of the detected corners (twodpoints)
-    ret, matrix, distortion, r_vecs, t_vecs = cv2.calibrateCamera(threedpoints, twodpoints, (w, h), None, None)
+    ret, matrix, distortion, r_vecs, t_vecs = \
+        cv2.calibrateCamera(threedpoints, twodpoints, (w, h), None, None)
 
     # Display the required output
     print(" Camera matrix (pixel):")
@@ -96,6 +97,6 @@ CHECKERBOARD = (6, 9)
 # Size of square on the checkerboard (length of one side) in meters
 sql = 0.03  # (m)
 # Path to image
-file_path = "C:/Users/ci1ek/Desktop/Motion/checkboard.mp4"
+file_path = "C:/Users/ci1ek/Desktop/Motion/calib_checkboard"
 # Run calibration
 camcalib_checkboard(CHECKERBOARD,sql,file_path)

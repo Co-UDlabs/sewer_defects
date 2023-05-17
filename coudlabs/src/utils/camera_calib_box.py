@@ -1,8 +1,8 @@
 '''
-File name: change_labels.py
+File name: camera_calib_box.py
 Author: Ehsan Kazemi
-Date created: Apr 2023
-Date last modified: 28 Apr 2023
+Date created: May 2023
+Date last modified: 17/05/2023
 -------------------------------------------------------------------------\
  This code checks if the input_path is a folder or a video file. If it's /
  a folder, it will read the images and corresponding label information   \

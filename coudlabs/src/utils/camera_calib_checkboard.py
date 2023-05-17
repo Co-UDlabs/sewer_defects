@@ -97,6 +97,6 @@ CHECKERBOARD = (6, 9)
 # Size of square on the checkerboard (length of one side) in meters
 sql = 0.03  # (m)
 # Path to image
-file_path = "C:/Users/ci1ek/Desktop/Motion/calib_checkboard"
+file_path = "C:/Ehsan/sewer_defects/coudlabs/examples/calibrate camera using checkboard video/video.mp4"
 # Run calibration
 camcalib_checkboard(CHECKERBOARD,sql,file_path)

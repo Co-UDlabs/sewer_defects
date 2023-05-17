@@ -45,7 +45,7 @@ def calibrate_camera_with_box(input_path, object_width, object_height):
     if os.path.isdir(input_path):
         
         # Input path is a folder containing still images and a text file
-        txt_file = os.path.join(input_path, os.path.basename(input_path) + '.txt')
+        txt_file = os.path.join(input_path, 'box_coordinates.txt')
 
         labels = pd.read_csv(txt_file, sep=" ", header=None)
         labels.columns = ["filename", "x0", "y0", "width", "height"]
@@ -82,7 +82,7 @@ def calibrate_camera_with_box(input_path, object_width, object_height):
     elif os.path.isfile(input_path):
         
         # Input path is a video file
-        txt_file = os.path.splitext(input_path)[0] + '.txt'
+        txt_file = os.path.join(os.path.dirname(input_path), 'box_coordinates.txt')
         labels = pd.read_csv(txt_file, sep=" ", header=None)
         labels.columns = ["frame", "x0", "y0", "width", "height"]
 
@@ -141,7 +141,7 @@ def calibrate_camera_with_box(input_path, object_width, object_height):
     print(distortion_coeffs) 
 
 # Specify the input path (folder or video file)
-input_path = 'C:/Users/ci1ek/Desktop/Motion/calib_pipe'
+input_path = 'C:/Ehsan/sewer_defects/coudlabs/examples/calibrate camera using joint images/'
 
 # Specify the known width and height of the rectangular object (in meters)
 object_width = 0.2

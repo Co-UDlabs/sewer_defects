@@ -36,6 +36,10 @@ def camcalib_checkboard(CHECKERBOARD, sql, input_path):
         cap = cv2.VideoCapture(input_path)
         images = []
 
+        # Initialise width and height
+        w = None
+        h = None
+    
         while cap.isOpened():
             ret, frame = cap.read()
 
@@ -45,6 +49,17 @@ def camcalib_checkboard(CHECKERBOARD, sql, input_path):
             images.append(frame)
 
         cap.release()
+
+    # Get the input file name without extension
+    folder, file_name = os.path.split(input_path)
+    file_name, _ = os.path.splitext(file_name)
+
+    # Create the output video file name
+    output_file_name = os.path.join(folder,f"{file_name}_output.mp4")
+
+    # Get the video codec and create VideoWriter object
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    output_video = cv2.VideoWriter(output_file_name, fourcc, 30.0, (w, h))
 
     for image in images:
         grayColor = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -68,7 +83,10 @@ def camcalib_checkboard(CHECKERBOARD, sql, input_path):
 
         cv2.imshow('img', image)
         cv2.waitKey(1)
+        
+        output_video.write(image)
 
+    output_video.release()
     cv2.destroyAllWindows()
 
     h, w = grayColor.shape
@@ -93,10 +111,10 @@ def camcalib_checkboard(CHECKERBOARD, sql, input_path):
 
 
 # Define the dimensions of the checkerboard
-CHECKERBOARD = (6, 9)
+CHECKERBOARD = (7, 7)
 # Size of square on the checkerboard (length of one side) in meters
-sql = 0.03  # (m)
+sql = 0.016  # (m)
 # Path to image
-file_path = "C:/Ehsan/sewer_defects/coudlabs/examples/calibrate camera using checkboard video/video.mp4"
+file_path = "C:/Ehsan/sewer_defects/coudlabs/examples/estimate size using a reference object/04/calibrate3.mp4"
 # Run calibration
 camcalib_checkboard(CHECKERBOARD,sql,file_path)

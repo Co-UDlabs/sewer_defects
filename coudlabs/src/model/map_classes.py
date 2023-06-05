@@ -2,7 +2,7 @@ import sys
 import os
 import cv2
 sys.path.append('C:/Ehsan/sewer_defects/coudlabs/src/utils')
-from distance_and_size import distsize
+from distance_and_size import distsize_II
 
 def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length):
 
@@ -19,8 +19,12 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
+    # Get the input file name without extension
+    folder, file_name = os.path.split(video_path)
+    file_name, _ = os.path.splitext(file_name)
+
     # Create a VideoWriter object to save the output video
-    output_path = os.path.join(os.path.dirname(video_path),"output.mp4")
+    output_path = os.path.join(folder,file_name+"_output.mp4")
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(output_path, fourcc, 30.0, (frame_width, frame_height))
 
@@ -34,7 +38,7 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
 
     # Calculate the size ratios, distances, and real sizes
     distance_ref_list, distance_other_list, real_size_other_list, \
-        common_frame_numbers =distsize(data_ref, data_other, real_size_ref, focal_length)
+        common_frame_numbers =distsize_II(data_ref, data_other, real_size_ref, focal_length)
     
     # Iterate over the video frames
     frame_number = 0
@@ -76,10 +80,6 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
         # if both objects are present in the frame
         if frame_number in common_frame_numbers:
 
-            # Box data (extracted from text files)
-            #ref = [row for row in data_ref if int(row[0]) == frame_number][0]
-            #other = [row for row in data_other if int(row[0]) == frame_number][0]
-
             # Write text with the estimated distance and real height on the image
             distance_ref = distance_ref_list[distsize_id]
             distance_other = distance_other_list[distsize_id]
@@ -87,27 +87,36 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
 
             if distance_other is not None and real_size_other is not None:
 
+                # write distacne of ref object to camera
+                text_dist_ref = f"{distance_ref:.2f} m"
+                (text_width, text_height) = cv2.getTextSize(text_dist_ref, font, \
+                    fontScale=font_scale, thickness=font_thickness)[0]
+                cv2.putText(frame, text_dist_ref, (int(x_ref + 1.05*w_ref), \
+                    int(y_ref + 1 * text_height)), \
+                    font, font_scale, (0, 255, 0), font_thickness, cv2.LINE_AA)   
+                
                 # write size of ref object
                 text_size_ref = f"{real_size_ref:.2f} m"
                 (text_width, text_height) = cv2.getTextSize(text_size_ref, font, \
                     fontScale=font_scale, thickness=font_thickness)[0]
-                cv2.putText(frame, text_size_ref, (int(x_ref + w_ref), \
-                    int(y_ref + h_ref - 1.1 * text_height)), \
+                cv2.putText(frame, text_size_ref, (int(x_ref + 1.05*w_ref), \
+                    int(y_ref + 2.25 * text_height)), \
                     font, font_scale, (0, 255, 0), font_thickness, cv2.LINE_AA)                
 
-                # write relative distacne of other object to camera
-                text_dist_other = f"{distance_other/distance_ref:.2f}"
+                # write distacne of other object to camera
+                text_dist_other = f"{distance_other:.2f} m"
                 (text_width, text_height) = cv2.getTextSize(text_dist_other, font, \
                     fontScale=font_scale, thickness=font_thickness)[0]
-                cv2.putText(frame, text_dist_other, (int(x_other + w_other), \
+                cv2.putText(frame, text_dist_other, (int(x_other + 1.05*w_other), \
                     int(y_other + h_other + 0.1 * text_height)), \
                     font, font_scale, (255, 0, 0), font_thickness, cv2.LINE_AA)                
+                
                 # write size of other object
                 text_size_other = f"{real_size_other:.2f} m"
                 (text_width, text_height) = cv2.getTextSize(text_size_other, font, \
                     fontScale=font_scale, thickness=font_thickness)[0]
-                cv2.putText(frame, text_size_other, (int(x_other + w_other), \
-                    int(y_other + h_other - 1.1 * text_height)), \
+                cv2.putText(frame, text_size_other, (int(x_other + 1.05*w_other), \
+                    int(y_other + h_other - 1.15 * text_height)), \
                     font, font_scale, (255, 0, 0), font_thickness, cv2.LINE_AA)                
 
             distsize_id += 1
@@ -121,6 +130,12 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
 
         frame_number += 1
 
+        # Check if distsize_id exceeds the list lengths
+        if distsize_id >= len(distance_ref_list) or \
+            distsize_id >= len(distance_other_list) or \
+                distsize_id >= len(real_size_other_list):
+            break
+    
     # Release the video capture and writer objects
     cap.release()
     out.release()
@@ -130,11 +145,11 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
 
 
 # Example usage
-path = "C:/Ehsan/sewer_defects/coudlabs/examples/estimate size using a reference object/02/"
+path = "C:/Ehsan/sewer_defects/coudlabs/examples/estimate size using a reference object/04/"
 video_path = path + "video.mp4"
 file_path_ref = path + "0.txt"
 file_path_other = path + "1.txt"
-real_size_ref = 0.13  # Real size of the reference object in meters
-focal_length = 200  # Focal length of the camera in pixels
+real_size_ref = 0.212  # Real size of the reference object in meters
+focal_length = 355  # Focal length of the camera in pixels
 
 map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)

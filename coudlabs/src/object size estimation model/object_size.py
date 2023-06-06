@@ -1,5 +1,5 @@
 """
-File name: map_classes.py
+File name: object_size.py
 Author: Ehsan Kazemi
 Date created: Apr 2023
 Date last modified: 05/06/2023
@@ -44,10 +44,18 @@ Note: Ensure that the required modules and files are accessible by       \
 -------------------------------------------------------------------------\
 """
 
+# Import dependencies
 import sys
 import os
 import cv2
-sys.path.append('C:/Ehsan/sewer_defects/coudlabs/src/utils')
+
+# Relative path
+script_path = os.path.abspath(__file__)
+project_folder = os.path.dirname(os.path.dirname(script_path))
+model_folder = os.path.join(project_folder, 'coudlabs/src/object size estimation model')
+sys.path.append(model_folder)
+
+# Import 'distsize' function
 from distance_and_size import distsize_I as distsize
 
 def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length):
@@ -191,11 +199,11 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
 
 
 # Example usage
-folder = "C:/Ehsan/sewer_defects/coudlabs/examples/estimate size using a reference object/04/"
-video_path = folder + "video.mp4"
-file_path_ref = folder + "0.txt"
-file_path_other = folder + "1.txt"
-real_size_ref = 0.212  # Real size of the reference object in meters
-focal_length = 355  # Focal length of the camera in pixels
+#folder = "C:/Ehsan/sewer_defects/coudlabs/examples/estimate size using a reference object/04/"
+#video_path = folder + "video.mp4"
+#file_path_ref = folder + "ref.txt"
+#file_path_other = folder + "other.txt"
+#real_size_ref = 0.212  # Real size of the reference object in meters
+#focal_length = 355  # Focal length of the camera in pixels
 
-map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
+#map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)

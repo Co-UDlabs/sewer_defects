@@ -1,10 +1,10 @@
-# Camera Calibration Models - README
+# Camera Calibration Models
 
 This repository contains two camera calibration models: the **Box Model** and the **Checkerboard Model**. These models are used to calibrate a camera using images or video frames.
 
 ## Box Model
 
-The Box Model performs camera calibration by using images of a rectangular object with a box drawn around it. The dimensions of the object (width and height) need to be provided as inputs. The calibration process involves the following steps:
+The Box Model performs camera calibration by using images of a an object (like a joint inside sewer pipe) with a box drawn around it. The dimensions of the object (width and height) need to be provided as inputs. The calibration process involves the following steps:
 
 1. Read the images and corresponding label information from a text file (if input is a folder) or a video file (if input is a video).
 2. Extract the corner information from the label file and calculate the image points (2D points) in pixels.

@@ -3,7 +3,7 @@ import numpy as np
 import glob
 import os
 
-def camcalib_checkboard(CHECKERBOARD, sql, input_path):
+def camcalib_checkerboard(CHECKERBOARD, sql, input_path):
     # Stop the iteration when specified
     # accuracy, epsilon, is reached or
     # specified number of iterations are completed.
@@ -36,9 +36,9 @@ def camcalib_checkboard(CHECKERBOARD, sql, input_path):
         cap = cv2.VideoCapture(input_path)
         images = []
 
-        # Initialise width and height
-        w = None
-        h = None
+        # Initialize width and height
+        w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     
         while cap.isOpened():
             ret, frame = cap.read()
@@ -64,7 +64,7 @@ def camcalib_checkboard(CHECKERBOARD, sql, input_path):
     for image in images:
         grayColor = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-        # Find the chessboard corners
+        # Find the checkerboard corners
         # If desired number of corners are
         # found in the image then ret = true
         ret, corners = cv2.findChessboardCorners(grayColor, CHECKERBOARD, cv2.CALIB_CB_ADAPTIVE_THRESH
@@ -108,13 +108,3 @@ def camcalib_checkboard(CHECKERBOARD, sql, input_path):
 
     print("\n Translation Vectors (m):")
     print(t_vecs)
-
-
-# Define the dimensions of the checkerboard
-CHECKERBOARD = (7, 7)
-# Size of square on the checkerboard (length of one side) in meters
-sql = 0.016  # (m)
-# Path to image
-file_path = "C:/Ehsan/sewer_defects/coudlabs/examples/estimate size using a reference object/04/calibrate3.mp4"
-# Run calibration
-camcalib_checkboard(CHECKERBOARD,sql,file_path)

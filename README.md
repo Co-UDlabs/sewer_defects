@@ -59,7 +59,7 @@ To use the Camera Calibration model, you can follow the steps below:
 
 The Object Size Estimation model is designed to estimate the real size of an object in a video based on the real size of a reference object present alongside it. The model requires the focal length of the camera to be known, which can be estimated using the Camera Calibration model.
 
-## Usage
+## Structure
 
 The model consists of two main components:
 

@@ -31,11 +31,11 @@ To use the Camera Calibration model, you can follow the steps below:
 1. Prepare the required input files:
 
    - Box Method:
-     - A folder containing images of a known-size calibration object (e.g., a box) taken from different viewpoints.
+     - A folder containing images of a known-size calibration object (e.g., a joint) taken from different distances.
      - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place the images in a local folder.
 
    - Checkerboard Method:
-     - A video file containing frames of a checkerboard pattern placed in different positions and orientations.
+     - A video file containing frames of (or still images of) a checkerboard pattern placed in different positions and orientations.
      - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place the video file in a local directory.
 
 2. Install the necessary dependencies:
@@ -44,32 +44,19 @@ To use the Camera Calibration model, you can follow the steps below:
 3. Run the model using the provided examples:
    - Box Method:
      - The notebook example demonstrates how to calibrate the camera using the box method.
-     - You can find the notebook example at [box_camera_calibration.ipynb](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/camera_calibration_examples/box_camera_calibration.ipynb).
+     - You can find the notebook example at [box_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/documentation/coudlabs/examples/camera_calibration_examples/box_notebook.ipynb).
      - Before running the notebook, download the example images from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place them in a local folder.
 
    - Checkerboard Method:
      - The notebook example demonstrates how to calibrate the camera using the checkerboard method.
-     - You can find the notebook example at [checkerboard_camera_calibration.ipynb](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/camera_calibration_examples/checkerboard_camera_calibration.ipynb).
-     - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory.
-
-   Note: Make sure to provide the necessary input files and adjust the parameters as needed within the notebook examples.
-
-## Repository Structure
-
-The repository contains the following files and folders:
-
-- `box_camera_calibration.ipynb`: A Jupyter Notebook demonstrating the camera calibration using the box method.
-- `checkerboard_camera_calibration.ipynb`: A Jupyter Notebook demonstrating the camera calibration using the checkerboard method.
-- `data/`: A folder containing example data for the box and checkerboard methods.
-- `LICENSE`: The license file for this project.
-- `README.md`: This README file.
+     - You can find the notebook example at [checkerboard_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/documentation/coudlabs/examples/camera_calibration_examples/checkerboard_notebook.ipynb).
+     - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory (in this example, use the black and white checkerboard video).
 
 ## License
 
 This project is licensed under the [License](LICENSE).
 
- 
- 
+  
 
 --------------------------------------------
 # Object Size Estimation Model

@@ -50,7 +50,7 @@ To use the Camera Calibration model, you can follow the steps below:
    - Checkerboard Method:
      - The notebook example demonstrates how to calibrate the camera using the checkerboard method.
      - You can find the notebook example at [checkerboard_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/checkerboard_notebook.ipynb).
-     - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory (in this example, use the black and white checkerboard video).
+     - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory (<em>in this example, make sure that you use the black and white video</em>).
 
 ## License
 

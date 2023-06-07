@@ -89,29 +89,15 @@ To use the Object Size Estimation model, you can follow the steps below:
 3. Run the model using the provided examples:
    - Example 1: Jupyter Notebook
      - The notebook example demonstrates how to use the Object Size Estimation model in a step-by-step manner.
-     - You can find the notebook example at [object_size_estimation.ipynb](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/object_size_estimation_examples/notebook.ipynb).
-     - Before running the notebook, download the required data files from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) and place them in the appropriate directories.
+     - Download examplar data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) and place them in a folder on your local machine.
+     - Use the notebook example at [notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/object_size_estimation_examples/notebook.ipynb) and set `folder` to where you have put the data on your local machine. 
 
    - Example 2: GUI Application
      - The GUI example provides a user-friendly interface for running the Object Size Estimation model.
-     - You can find the GUI application in the `gui_app` folder of the repository.
-     - Before running the GUI application, download the required data files from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) and place them in the appropriate directories.
-     - Run the `object_size_estimation.exe` file to launch the GUI application.
-
-     Note: Make sure to provide the necessary input files and adjust the parameters as needed within the GUI application.
-
-## Repository Structure
-
-The repository contains the following files and folders:
-
-- `object_size.py`: The main script for processing the video and estimating object sizes.
-- `distance_and_size.py`: The module for calculating size ratios, distances, and real sizes.
-- `gui_app/`: The folder containing the GUI application for the Object Size Estimation model.
-  - `object_size_estimation.exe`: The executable file to run the GUI application.
-  - `README.md`: Instructions for using the GUI application.
-- `object_size_estimation.ipynb`: A Jupyter Notebook demonstrating the step-by-step usage of the Object Size Estimation model.
-- `README.md`: The main README file providing an overview of the Object Size Estimation model.
+     - Download examplar data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) and place them in a folder on your local machine.
+     - Run the gui.exe file in the folder [gui](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/object_size_estimation_examples/gui)
+     - Specify yhe location of the data files and set the real size of the reference object and the focal length of the camera and press the run the model button.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [License](LICENSE).

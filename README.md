@@ -13,23 +13,6 @@ The Box Model performs camera calibration by using images of a an object (like a
 5. Perform camera calibration using OpenCV's `calibrateCamera` function.
 6. Print the camera matrix and distortion coefficients obtained from the calibration process.
 
-### Usage
-
-To use the Box Model, you need to provide the following inputs:
-
-- `input_path`: The path to the folder containing still images or the video file.
-- `object_width`: The width of the rectangular object in real-world units.
-- `object_height`: The height of the rectangular object in real-world units.
-
-Make sure to have a text file named `box_coordinates.txt` in the same directory as the images or the video file. The text file should contain the label information for each image or video frame in the format: `filename x0 y0 width height`. Each line represents one frame, where:
-- `filename`: The name of the image file or the frame number of the video.
-- `x0`: Relative position of the box's center along the x-axis (0.0 to 1.0).
-- `y0`: Relative position of the box's center along the y-axis (0.0 to 1.0).
-- `width`: Relative width of the box (0.0 to 1.0).
-- `height`: Relative height of the box (0.0 to 1.0).
-
-Run the `calibrate_camera_with_box` function, passing the required inputs, to perform camera calibration.
-
 ## Checkerboard Model
 
 The Checkerboard Model performs camera calibration using a checkerboard pattern. The calibration process involves the following steps:
@@ -41,23 +24,50 @@ The Checkerboard Model performs camera calibration using a checkerboard pattern.
 5. Perform camera calibration using OpenCV's `calibrateCamera` function.
 6. Print the camera matrix, distortion coefficients, rotation vectors, and translation vectors obtained from the calibration process.
 
-### Usage
+## Example Usage
 
-To use the Checkerboard Model, you need to provide the following inputs:
+To use the Camera Calibration model, you can follow the steps below:
 
-- `CHECKERBOARD`: A tuple representing the number of inner corners in the checkerboard pattern (e.g., `(9, 6)` for a 9x6 pattern).
-- `sql`: The size of one square in the checkerboard pattern in real-world units.
-- `input_path`: The path to the folder containing still images or the video file.
+1. Prepare the required input files:
 
-If the input is a folder, the model will look for images with the `.jpg` extension in the specified folder. If the input is a video file, the model will process the video frames.
+   - Box Method:
+     - A folder containing images of a known-size calibration object (e.g., a box) taken from different viewpoints.
+     - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place the images in a local folder.
 
-Run the `camcalib_checkerboard` function, passing the required inputs, to perform camera calibration.
+   - Checkerboard Method:
+     - A video file containing frames of a checkerboard pattern placed in different positions and orientations.
+     - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place the video file in a local directory.
 
-## Examples
+2. Install the necessary dependencies:
+   - OpenCV: `pip install opencv-python`
 
-To see examples of how to run these models, refer to the provided
+3. Run the model using the provided examples:
+   - Box Method:
+     - The notebook example demonstrates how to calibrate the camera using the box method.
+     - You can find the notebook example at [box_camera_calibration.ipynb](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/camera_calibration_examples/box_camera_calibration.ipynb).
+     - Before running the notebook, download the example images from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place them in a local folder.
 
- with cutoff of 4096 characters
+   - Checkerboard Method:
+     - The notebook example demonstrates how to calibrate the camera using the checkerboard method.
+     - You can find the notebook example at [checkerboard_camera_calibration.ipynb](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/camera_calibration_examples/checkerboard_camera_calibration.ipynb).
+     - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory.
+
+   Note: Make sure to provide the necessary input files and adjust the parameters as needed within the notebook examples.
+
+## Repository Structure
+
+The repository contains the following files and folders:
+
+- `box_camera_calibration.ipynb`: A Jupyter Notebook demonstrating the camera calibration using the box method.
+- `checkerboard_camera_calibration.ipynb`: A Jupyter Notebook demonstrating the camera calibration using the checkerboard method.
+- `data/`: A folder containing example data for the box and checkerboard methods.
+- `LICENSE`: The license file for this project.
+- `README.md`: This README file.
+
+## License
+
+This project is licensed under the [License](LICENSE).
+
  
  
 

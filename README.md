@@ -30,11 +30,11 @@ To use the Camera Calibration model, you can follow the steps below:
 
 1. Prepare the required input files:
 
-   - <em><ins>Box Method</ins></em>:
+   - <ins>Box Method</ins>:
      - A folder containing images of a known-size calibration object (e.g., a joint) taken from different distances.
      - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place the images in a local folder.
 
-   - <ins><em>Checkerboard Method</ins></em>:
+   - <ins>Checkerboard Method</ins>:
      - A video file containing frames of (or still images of) a checkerboard pattern placed in different positions and orientations.
      - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place the video file in a local directory.
 
@@ -42,12 +42,12 @@ To use the Camera Calibration model, you can follow the steps below:
    - OpenCV: `pip install opencv-python`
 
 3. Run the model using the provided examples:
-   - <ins><em>Box Method</ins></em>:
+   - <ins>Box Method</ins>:
      - The notebook example demonstrates how to calibrate the camera using the box method.
      - You can find the notebook example at [box_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/box_notebook.ipynb).
      - Before running the notebook, download the example images from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place them in a local folder.
 
-   - <ins><em>Checkerboard Method</ins></em>:
+   - <ins>Checkerboard Method</ins>:
      - The notebook example demonstrates how to calibrate the camera using the checkerboard method.
      - You can find the notebook example at [checkerboard_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/checkerboard_notebook.ipynb).
      - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory (<em>in this example, make sure that you use the black and white video</em>).

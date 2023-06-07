@@ -31,11 +31,11 @@ To use the Camera Calibration model, you can follow the steps below:
 1. Prepare the required input files:
 
    - <ins>Box Method</ins>:
-     - A folder containing images of a known-size calibration object (e.g., a joint) taken from different distances.
+     - A folder containing images of (or a video of) a known-size calibration object (e.g., a joint) taken from different distances.
      - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place the images in a local folder.
 
    - <ins>Checkerboard Method</ins>:
-     - A video file containing frames of (or still images of) a checkerboard pattern placed in different positions and orientations.
+     - A video file containing frames of (or a folder of still images of) a checkerboard pattern placed in different positions and orientations.
      - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place the video file in a local directory.
 
 2. Install the necessary dependencies:

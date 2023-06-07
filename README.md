@@ -89,7 +89,7 @@ To use the Object Size Estimation model, you can follow the steps below:
 3. Run the model using the provided examples:
    - Example 1: Jupyter Notebook
      - The notebook example demonstrates how to use the Object Size Estimation model in a step-by-step manner.
-     - You can find the notebook example at [object_size_estimation.ipynb](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/object_size_estimation_examples/object_size_estimation.ipynb).
+     - You can find the notebook example at [object_size_estimation.ipynb](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/object_size_estimation_examples/notebook.ipynb).
      - Before running the notebook, download the required data files from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) and place them in the appropriate directories.
 
    - Example 2: GUI Application

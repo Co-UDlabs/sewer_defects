@@ -1,4 +1,4 @@
-# Camera Calibration Models
+# Camera Calibration Model
 
 This repository contains two camera calibration models: the **Box Model** and the **Checkerboard Model**. These models are used to calibrate a camera using images or video frames.
 

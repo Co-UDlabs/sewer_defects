@@ -96,7 +96,7 @@ To use the Object Size Estimation model, you can follow the steps below:
    - Example 2: GUI Application
      - The GUI example provides a user-friendly interface for running the Object Size Estimation model.
      - Download examplar data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) (where a video and two text files are stored) and place them in a folder on your local machine. The video shows two object, the larger one is the reference object with known height, and the smaller one is the target object of which height is to be estimated. The text files contain coordinates of the bounding boxes around the objects at frames where the boxes are present.
-     - Run the gui.exe file in the folder [gui](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/object_size_estimation_examples/gui)
+     - Run the 'gui.exe' file in the folder [gui](https://github.com/ehsankazemi47/sewer_defects/tree/documentation/coudlabs/examples/object_size_estimation_examples/gui).
      - Set the location of the data files and specify the real size of the reference object and the focal length of the camera in the gui window and press the run the model button. A video will be saved in the same folder with the estimated size of the target object and its distance to the camera displayed on the image.
 
 ## License

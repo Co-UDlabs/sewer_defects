@@ -95,4 +95,4 @@ To use the Object Size Estimation model, you can follow the steps below:
 ----------------------------------------------
 # License
 
-This project is licensed under the [License](LICENSE)?.
+This project is licensed under the [License?](LICENSE).

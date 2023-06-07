@@ -52,10 +52,6 @@ To use the Camera Calibration model, you can follow the steps below:
      - You can find the notebook example at [checkerboard_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/checkerboard_notebook.ipynb).
      - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory (<em>in this example, make sure that you use the black and white video</em>).
 
-## License
-
-This project is licensed under the [License](LICENSE).
-
   
 
 --------------------------------------------
@@ -96,6 +92,7 @@ To use the Object Size Estimation model, you can follow the steps below:
      - Run the 'gui.exe' file in the folder [gui](https://github.com/ehsankazemi47/sewer_defects/tree/coudlabs/coudlabs/examples/object_size_estimation_examples/gui).
      - Set the location of the data files and specify the real size of the reference object and the focal length of the camera in the gui window and press the run the model button. A video will be saved in the same folder with the estimated size of the target object and its distance to the camera displayed on the image.
 
-## License
+----------------------------------------------
+# License
 
 This project is licensed under the [License](LICENSE).

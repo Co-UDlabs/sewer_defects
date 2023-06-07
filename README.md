@@ -30,11 +30,11 @@ To use the Camera Calibration model, you can follow the steps below:
 
 1. Prepare the required input files:
 
-   - Box Method:
+   - <em><ins>Box Method</ins></em>:
      - A folder containing images of a known-size calibration object (e.g., a joint) taken from different distances.
      - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place the images in a local folder.
 
-   - Checkerboard Method:
+   - <ins><em>Checkerboard Method</ins></em>:
      - A video file containing frames of (or still images of) a checkerboard pattern placed in different positions and orientations.
      - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place the video file in a local directory.
 
@@ -42,12 +42,12 @@ To use the Camera Calibration model, you can follow the steps below:
    - OpenCV: `pip install opencv-python`
 
 3. Run the model using the provided examples:
-   - Box Method:
+   - <ins><em>Box Method</ins></em>:
      - The notebook example demonstrates how to calibrate the camera using the box method.
      - You can find the notebook example at [box_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/box_notebook.ipynb).
      - Before running the notebook, download the example images from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place them in a local folder.
 
-   - Checkerboard Method:
+   - <ins><em>Checkerboard Method</ins></em>:
      - The notebook example demonstrates how to calibrate the camera using the checkerboard method.
      - You can find the notebook example at [checkerboard_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/checkerboard_notebook.ipynb).
      - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory (<em>in this example, make sure that you use the black and white video</em>).
@@ -84,13 +84,13 @@ To use the Object Size Estimation model, you can follow the steps below:
    - OpenCV: `pip install opencv-python`
 
 3. Run the model using the provided examples:
-   - Example 1: Jupyter Notebook
+   - Example 1: <ins><em>Jupyter Notebook</ins></em>
      - The notebook example demonstrates how to use the Object Size Estimation model in a step-by-step manner.
      - Download examplar data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) (where a video and two text files are stored) and place them in a folder on your local machine. The video shows two object, the larger one is the reference object with known height, and the smaller one is the target object of which height is to be estimated. The text files contain coordinates of the bounding boxes around the objects at frames where the boxes are present.
      - Use the notebook example at [notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/object_size_estimation_examples/notebook.ipynb) and set `folder` to where you have put the data on your local machine.
      - Run the notebook. A video will be saved in the same folder with the estimated size of the target object and its distance to the camera displayed on the image.
 
-   - Example 2: GUI Application
+   - Example 2: <ins><em>GUI Application</ins></em>
      - The GUI example provides a user-friendly interface for running the Object Size Estimation model.
      - Download examplar data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) (where a video and two text files are stored) and place them in a folder on your local machine. The video shows two object, the larger one is the reference object with known height, and the smaller one is the target object of which height is to be estimated. The text files contain coordinates of the bounding boxes around the objects at frames where the boxes are present.
      - Run the 'gui.exe' file in the folder [gui](https://github.com/ehsankazemi47/sewer_defects/tree/coudlabs/coudlabs/examples/object_size_estimation_examples/gui).

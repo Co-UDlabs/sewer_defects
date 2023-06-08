@@ -165,6 +165,5 @@ coudlabs/data/*
 !*.yaml
 
 #ignore predictions
-coudlabs/trained models/
-monodepth2/
+coudlabs/trained_models/
 #coudlabs/examples/

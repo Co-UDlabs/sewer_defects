@@ -135,4 +135,5 @@ def check(data_dir,extensions):
 
         # Save image
         cv2.imwrite(os.path.join(write_path, file_name + " labels" + file_extension), img)
-        print("Saved to ", write_path)
+    
+    print("Saved to ", write_path)

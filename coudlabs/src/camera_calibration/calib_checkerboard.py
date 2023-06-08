@@ -25,21 +25,28 @@ def camcalib_checkerboard(CHECKERBOARD, sql, input_path):
     if os.path.isdir(input_path):
         # Input path is a folder containing still images
         paths = glob.glob(os.path.join(input_path, '*.jpg'))
-        
+
+        if not paths:
+            raise ValueError("No image files found in the specified folder.")
+
         images = []
         for filepath in paths:
             image = cv2.imread(filepath)
             images.append(image)
 
-    else:
+    elif os.path.isfile(input_path):
         # Input path is a video file
         cap = cv2.VideoCapture(input_path)
+
+        if not cap.isOpened():
+            raise ValueError("Could not open the video file.")
+
         images = []
 
         # Initialize width and height
         w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    
+
         while cap.isOpened():
             ret, frame = cap.read()
 
@@ -50,12 +57,15 @@ def camcalib_checkerboard(CHECKERBOARD, sql, input_path):
 
         cap.release()
 
+    else:
+        raise ValueError("The specified input_path does not exist.")
+
     # Get the input file name without extension
     folder, file_name = os.path.split(input_path)
     file_name, _ = os.path.splitext(file_name)
 
     # Create the output video file name
-    output_file_name = os.path.join(folder,f"{file_name}_output.mp4")
+    output_file_name = os.path.join(folder, f"{file_name}_output.mp4")
 
     # Get the video codec and create VideoWriter object
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
@@ -83,7 +93,7 @@ def camcalib_checkerboard(CHECKERBOARD, sql, input_path):
 
         cv2.imshow('img', image)
         cv2.waitKey(1)
-        
+
         output_video.write(image)
 
     output_video.release()

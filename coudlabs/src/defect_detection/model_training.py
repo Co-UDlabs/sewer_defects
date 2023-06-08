@@ -11,8 +11,8 @@ def train(model_name, project_root, **kwargs):
     
     # Get data file path
     current_directory = os.getcwd()
-    two_steps_above_directory = os.path.abspath(os.path.join(current_directory, "../.."))
-    yaml_file_path = os.path.join(two_steps_above_directory, "data/data.yaml")
+    coudlabs_directory = os.path.abspath(os.path.join(current_directory, "../..")) # two levels up
+    yaml_file_path = os.path.join(coudlabs_directory, "data/data.yaml")
     
     # Check if the yaml file exists
     if not os.path.exists(yaml_file_path):

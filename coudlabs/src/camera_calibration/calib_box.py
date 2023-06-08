@@ -31,6 +31,13 @@ def plot_box_on_image(image, corners_pixel):
     cv2.waitKey(1)
 
 def calibrate_camera_with_box(input_path, object_width, object_height):
+        
+    if not os.path.exists(input_path):
+        raise FileNotFoundError(f"Input path '{input_path}' does not exist.")
+
+    if not os.path.isfile(input_path) and not os.path.isdir(input_path):
+        raise ValueError(f"Input path '{input_path}' is neither a file nor a directory.")
+
     # Prepare object points (grid) for the rectangular object
     # It is always the same for all the images since the real size of the object is fixed
     object_points = np.zeros((4, 3), dtype=np.float32)

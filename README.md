@@ -1,10 +1,12 @@
-# Sewer Defects Processing Project
+# Sewer Defects
 
-Welcome to the Sewer Defects Processing Project! This project focuses on processing CCTV images of sewer pipes to detect defects, calibrate cameras, and estimate object sizes. It utilizes deep learning models and computer vision techniques to provide accurate results.
+![License](https://img.shields.io/github/license/ehsankazemi47/sewer_defects)
 
-## Project Structure
+This Python project repository focuses on processing CCTV images of sewer pipes and provides multiple functionalities, including defect detection using the YOLO v8 model, camera calibration, and object size estimation. The project utilizes the Ultralytics YOLO v8 model for defect detection and provides modules for camera calibration using the Checkerboard and Box methods. It also offers object size estimation by leveraging a reference object in the video.
 
-The project has the following structure:
+## Structure
+
+The repository has the following structure:
 
 sewer_defects/
 +-- cloudlabs/
@@ -21,8 +23,8 @@ sewer_defects/
 ¦   ¦   ¦   +-- train_and_test.ipynb
 ¦   ¦   ¦   +-- detect_unseen.ipynb
 ¦   ¦   +-- object_size_estimation_examples/
-¦   ¦       +-- object_size.ipynb
-¦   ¦       +-- object_size.py
+¦   ¦   ¦   +-- object_size.ipynb
+¦   ¦   ¦   +-- object_size.py
 ¦   +-- src/
 ¦   ¦   +-- defect_detection/
 ¦   ¦   ¦   +-- __init__.py
@@ -35,65 +37,64 @@ sewer_defects/
 ¦   ¦   ¦   +-- calib_box.py
 ¦   ¦   ¦   +-- calib_checkerboard.py
 ¦   ¦   +-- object_size_estimation/
-¦   ¦       +-- __init__.py
-¦   ¦       +-- distance_and_size.py
-¦   ¦       +-- object_size.py
+¦   ¦   ¦   +-- __init__.py
+¦   ¦   ¦   +-- distance_and_size.py
+¦   ¦   ¦   +-- object_size.py
 ¦   +-- trained_models/
 +-- ultralytics/
-    +-- assets/
-    +-- models/
-    +-- yolo/
-    +-- tracker/
-    +-- hub/
-    +-- nn/
++-- assets/
++-- models/
++-- yolo/
++-- tracker/
++-- hub/
++-- nn/
 
 
-In the above structure, the `ultralytics` directory contains the YOLO model implementation, while the `cloudlabs` directory contains the source code, data, and examples for the Sewer Defects Processing Project.
-
-## Functionalities
+## Functionality
 
 ### 1. Defect Detection
 
-The main functionality of the project is to detect defects in sewer pipes using the YOLO v8 model implemented by Ultralytics. The defect detection model is trained using labeled images of sewer defects. You can follow these steps to use the defect detection model:
+The project utilizes the YOLO v8 model provided by Ultralytics for detecting defects in sewer pipes. To use this functionality, follow these steps:
 
-1. Collect images of sewer defects and label them using the [YoloLabel](https://github.com/developer0hye/Yolo_Label) tool. Categorize the defects as 'obstacle - Block', 'obstacle - deposit', 'obstacle - tree root', 'joint', 'crack', 'damage - hole', 'damage - severe', or 'corrosion'.
-
-2. Organize the labeled images and labels in a folder named 'data' or 'sewer defect data'. Create a subfolder named 'labelled_images' and place the images and label files inside it.
-
-3. Use the `check_data.ipynb` notebook or the `check_data.py` script provided in the `examples/defect_detection_examples` directory to verify the data and ensure it is correctly labeled.
-
-4. Prepare the data for model training by running the `prepare_data.ipynb` notebook or the `prepare_data.py` script in the `examples/defect_detection_examples` directory. This process will split the data into training, validation, and test subsets and copy them into the `data` folder under `cloudlabs`. Additionally, you need to modify the `data.yaml` file in the `data` folder to specify the dataset configuration.
-
-5. Train and test the defect detection model using the `train_and_test.ipynb` notebook in the `examples/defect_detection_examples` directory. The trained models will be saved under `cloudlabs/trained_models`.
-
-6. To detect defects in unseen images, use the `detect_unseen.ipynb` notebook in the `examples/defect_detection_examples` directory. This notebook demonstrates how to load the trained model and perform defect detection on new images.
+- Collect images of defects and label them using [YoloLabel](https://github.com/developer0hye/Yolo_Label).
+- Create a folder on your computer named `data` or `sewer defect data` and store the labeled images and their corresponding label files in a subfolder named `labelled_images`.
+- Check the data using the `check_data.ipynb` notebook or the `check_data.py` GUI provided in the `examples` folder.
+- Prepare the data for model training using the `prepare_data.ipynb` notebook or the `prepare_data.py` GUI in the `examples` folder. This process splits the data into training, validation, and test subsets and copies them into the `data` folder under `cloudlabs`. Modify the `data.yaml` file in the `data` folder accordingly. The YOLO model will read this file for training and validation.
+- Train and test the model using the `train_and_test.ipynb` notebook in the `examples` folder. The trained models will be saved under `cloudlabs/trained_models`.
+- To predict defects in unseen images, use the `detect_unseen.ipynb` notebook in the `examples` folder.
 
 ### 2. Camera Calibration
 
-The project includes modules for calibrating a camera, which is useful when the specifications, especially the focal length, of the camera are unknown. There are two methods available: Checkerboard and Box calibration.
+The project provides two methods for calibrating a camera: Checkerboard and Box. These methods are useful when the specifications, especially the focal length, of the camera recording the images are unknown.
 
-- **Checkerboard Calibration**: If you have an image of a checkerboard recorded by the camera, you can use the `calib_checkerboard.ipynb` notebook in the `examples/camera_calibration_examples` directory to calibrate the camera. This method handles both videos and groups of still images.
+- To calibrate the camera using a checkerboard image, use the `calib_checkerboard.ipynb` notebook in the `camera_calibration_examples` folder.
+- To calibrate the camera using a labeled object with a known size, use the `calib_box.ipynb` notebook in the `camera_calibration_examples` folder.
 
-- **Box Calibration**: If a checkerboard image is not available, you can use the `calib_box.ipynb` notebook in the `examples/camera_calibration_examples` directory. This method involves labeling an object with a known size (e.g., a box) and using images of the object from different distances to calibrate the camera. This method also works with videos and groups of still images.
-
-Both calibration methods output a calibration matrix, which includes the focal length and other camera parameters.
+These calibration models can be applied to videos or groups of still images. The outputs of the models include the calibration matrix from which the focal length can be obtained.
 
 ### 3. Object Size Estimation
 
-The object size estimation module allows you to estimate the size of objects in sewer pipe images. Here's how you can use it:
+The project provides modules for measuring the size of an object in a video. This functionality is useful for mapping the detected defects to standard defect classifications based on their sizes and positions.
 
-1. **Focal Length Determination**: Before estimating object sizes, you need to determine the focal length of the camera used to capture the images. This information is crucial for accurate size estimation.
+To measure the size of an object, follow these steps:
 
-2. **Reference Object Selection**: Identify a reference object in the sewer pipe images with a known size. Joints in CCTV images of sewer pipes are commonly used as reference objects.
+- Calibrate the camera (if the focal length is unknown) using either the `calib_checkerboard.ipynb` or `calib_box.ipynb` notebook, depending on the availability of a checkerboard image.
+- Use the `object_size.ipynb` notebook or the `object_size.py` GUI provided in the `object_size_estimation_examples` folder to estimate the size of an object based on the known size of a reference object, such as a joint. This functionality requires the focal length of the camera and a reference object in the video.
 
-3. **Size Estimation**: Run the `object_size.ipynb` notebook in the `examples/object_size_estimation_examples` directory. This notebook demonstrates how to estimate the size of objects based on the known size of the reference object and the camera's focal length.
+## Examples
 
-## Data and Examples
+The `examples` folder contains Jupyter notebooks (`.ipynb`) and Python GUI (`.py`) files demonstrating how to use the different functionalities of the project. The notebooks provide step-by-step instructions and can be modified for specific applications.
 
-For detailed examples on how to use the Sewer Defects Processing Project, please refer to the [`examples`](./examples) directory in the repository. It contains step-by-step notebooks and scripts for defect detection, camera calibration, and object size estimation.
+To use the provided examples:
+
+1. Clone this repository to your local machine.
+2. Install the required dependencies mentioned in the `requirements.txt` file.
+3. Follow the instructions in each example file to run the desired functionality.
+
+## Data
+
+A sample dataset is provided in this [Google Drive folder](https://drive.google.com/drive/u/1/folders/1BoLSWbCj6WimaW4-Wca3CPkpgW5HJUqH) for testing and experimentation purposes. Please note that the labeled images included in the dataset are a small sample and may not yield accurate results when training the defect detection model. However, these images are freely available for use, and as long as you cite this project, there are no copyright issues (see [project license](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE)).
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE). Feel free to use and modify the code according to your needs.
-
-Feel free to copy the above content and use it as your README.md file for your GitHub repository.
+This project is licensed under the [MIT License](LICENSE).

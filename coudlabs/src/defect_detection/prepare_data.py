@@ -46,8 +46,13 @@ def prepare(data_name, labelled_images_path, extensions, cl2gry, train_percent, 
     if not os.path.exists(labelled_images_path):
         raise FileNotFoundError("The labelled_images_path directory does not exist.")
 
+    # Get data file path
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    coudlabs_directory = os.path.abspath(os.path.join(script_dir, "../..")) # two levels up
+    data_dir = os.path.join(coudlabs_directory, "data")
+    
     # Destination directory
-    destination_dir = "C:/Ehsan/sewer_defects/coudlabs/data/" + data_name
+    destination_dir = os.path.join(data_dir, data_name)
 
     # Set the local paths for the three folders where the downloaded files will be saved
     train_images = destination_dir + "/images/training/"
@@ -75,9 +80,9 @@ def prepare(data_name, labelled_images_path, extensions, cl2gry, train_percent, 
 
     # Split images into three subsets (training / validation / test) randomly
     random.shuffle(image_list)
-    files_trainset = image_list[0:nsub_train]
-    files_validset = image_list[nsub_train:nsub_train + nsub_valid]
-    files_testset = image_list[nsub_train + nsub_valid:nsub_train + nsub_valid + nsub_test]
+    files_trainset = image_list[0 : nsub_train]
+    files_validset = image_list[nsub_train : nsub_train + nsub_valid]
+    files_testset = image_list[nsub_train + nsub_valid : nsub_train + nsub_valid + nsub_test]
 
     # Copy files
     print(f'Training data set ... {train_percent}% of data')

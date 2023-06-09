@@ -10,8 +10,8 @@ import datetime
 def train(model_name, project_root, **kwargs):
     
     # Get data file path
-    current_directory = os.getcwd()
-    coudlabs_directory = os.path.abspath(os.path.join(current_directory, "../..")) # two levels up
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+    coudlabs_directory = os.path.abspath(os.path.join(script_dir, "../..")) # two levels up
     yaml_file_path = os.path.join(coudlabs_directory, "data/data.yaml")
     
     # Check if the yaml file exists

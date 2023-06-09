@@ -8,47 +8,48 @@ This Python project repository focuses on processing CCTV images of sewer pipes 
 
 The repository has the following structure:
 
+'''bash
 sewer_defects/
-+-- coudlabs/
-¦   +-- data/
-¦   +-- examples/
-¦   ¦   +-- camera_calibration_examples/
-¦   ¦   ¦   +-- box.ipynb
-¦   ¦   ¦   +-- box.exe
-¦   ¦   ¦   +-- checkerboard.ipynb
-¦   ¦   ¦   +-- checkerboard.exe
-¦   ¦   +-- defect_detection_examples/
-¦   ¦   ¦   +-- check_data.ipynb
-¦   ¦   ¦   +-- check_data.exe
-¦   ¦   ¦   +-- prepare_data.ipynb
-¦   ¦   ¦   +-- prepare_data.exe
-¦   ¦   ¦   +-- train_and_test.ipynb
-¦   ¦   ¦   +-- train_and_test.exe
-¦   ¦   ¦   +-- detect_unseen.ipynb
-¦   ¦   ¦   +-- detect_unseen.exe
-¦   ¦   +-- object_size_estimation_examples/
-¦   ¦       +-- object_size.ipynb
-¦   ¦       +-- object_size.exe
-¦   +-- src/
-¦   ¦   +-- defect_detection/
-¦   ¦   ¦   +-- __init__.py
-¦   ¦   ¦   +-- check_data.py
-¦   ¦   ¦   +-- prepare_data.py
-¦   ¦   ¦   +-- model_training.py
-¦   ¦   ¦   +-- prediction.py
-¦   ¦   +-- camera_calibration/
-¦   ¦   ¦   +-- __init__.py
-¦   ¦   ¦   +-- camera_calib_box.py
-¦   ¦   ¦   +-- camera_calib_checkerboard.py
-¦   ¦   +-- object_size_estimation/
-¦   ¦       +-- __init__.py
-¦   ¦       +-- distance_and_size.py
-¦   ¦       +-- object_size.py
-¦   +-- trained_models/
-+-- ultralytics/
-    +-- assets/
-    +-- models/
-    +-- yolo/
+├── cloudlabs/
+│ ├── data/
+│ ├── examples/
+│ │ ├── camera_calibration_examples/
+│ │ │ ├── calib_box.ipynb
+│ │ │ ├── calib_checkerboard.ipynb
+│ │ ├── defect_detection_examples/
+│ │ │ ├── check_data.ipynb
+│ │ │ ├── check_data.py
+│ │ │ ├── prepare_data.ipynb
+│ │ │ ├── prepare_data.py
+│ │ │ ├── train_and_test.ipynb
+│ │ │ ├── detect_unseen.ipynb
+│ │ ├── object_size_estimation_examples/
+│ │ │ ├── object_size.ipynb
+│ │ │ ├── object_size.py
+├── src/
+│ ├── defect_detection/
+│ │ ├── init.py
+│ │ ├── check_data.py
+│ │ ├── prepare_data.py
+│ │ ├── model_training.py
+│ │ ├── prediction.py
+│ ├── camera_calibration/
+│ │ ├── init.py
+│ │ ├── calib_box.py
+│ │ ├── calib_checkerboard.py
+│ ├── object_size_estimation/
+│ ├── init.py
+│ ├── distance_and_size.py
+│ ├── object_size.py
+├── trained_models/
+├── ultralytics/
+├── assets/
+├── models/
+├── yolo/
+├── tracker/
+├── hub/
+├── nn/
+'''
 
 ## Functionality
 

@@ -8,7 +8,7 @@ This Python project repository focuses on processing CCTV images of sewer pipes 
 
 The repository has the following structure:
 
-'''bash
+'''
 sewer_defects/
 ├── cloudlabs/
 │ ├── data/

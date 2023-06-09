@@ -75,46 +75,42 @@ sewer_defects/
 
 The YOLO model is located under the `ultralytics` directory, while the sewer defect models are located under the `cloudlabs` directory. The `src` directory contains the source code for the defect detection, camera calibration, and object size estimation modules.
 
-## Usage
+Examples
+This section provides detailed instructions on how to use each model included in the Sewer Defects Processing Project. It covers defect detection, camera calibration, and object size estimation. Follow the steps outlined for each model to effectively utilize them and replicate the results.
 
-To effectively use the functionalities provided by the Sewer Defects Processing Project, follow the instructions outlined below.
+Defect Detection
+The defect detection model utilizes the YOLO v8 model implemented by Ultralytics. It detects various types of defects in sewer pipes using deep learning. Follow the steps below to use the defect detection model:
 
-### Defect Detection
+Data Collection and Labeling: Collect images of sewer defects and label them using the YoloLabel tool. Ensure that the defects are categorized as 'obstacle - Block', 'obstacle - deposit', 'obstacle - tree root', 'joint', 'crack', 'damage - hole', 'damage - severe', or 'corrosion'. The corresponding defect IDs used in the model functions are ObsBlc, ObsDep, ObsRot, Jnt, Crk, DmgHol, DmgSev, and Cor, respectively.
 
-1. Collect images of sewer defects and label them using the YoloLabel tool. The defects are categorized as follows: 'obstacle - Block', 'obstacle - deposit', 'obstacle - tree root', 'joint', 'crack', 'damage - hole', 'damage - severe', and 'corrosion'. The defect IDs used in the model functions are `ObsBlc`, `ObsDep`, `ObsRot`, `Jnt`, `Crk`, `DmgHol`, `DmgSev`, and `Cor`, respectively.
+Data Organization: Create a folder on your computer to store the labeled images and labels (text files). Name the folder something like 'data' or 'sewer defect data', and create a subfolder named 'labelled_images' inside it.
 
-2. Create a folder on your computer to store the labeled images and labels (text files). Name the folder something like 'data' or 'sewer defect data', and create a subfolder named 'labelled_images' inside it.
+Data Validation: Use the check_data.ipynb notebook or the check_data.py GUI under the examples/defect_detection_examples directory to check the labeled data for any issues or inconsistencies. This step ensures that your labeled data is in the correct format and ready for model training.
 
-3. Use the `check_data.ipynb` notebook or the `check_data.py` GUI under the `examples/defect_detection_examples` directory to check the data for any issues or inconsistencies. This step ensures that your labeled data is in the correct format and ready for model training.
+Data Preparation: Prepare the data for model training using the prepare_data.ipynb notebook or the prepare_data.py GUI under the examples/defect_detection_examples directory. This process will split the data into three subsets: training, validation, and testing. The subsets will be copied into the 'data' folder under cloudlabs. Modify the data.yaml file under the data folder accordingly. The YOLO model will read this file to use the data for training and validation.
 
-4. Prepare the data for model training using the `prepare_data.ipynb` notebook or the `prepare_data.py` GUI under the `examples/defect_detection_examples` directory. This process will split the data into three subsets: training, validation, and testing. The subsets will be copied into the 'data' folder under `cloudlabs`. Modify the `data.yaml` file under the `data` folder accordingly. The YOLO model will read this file to use the data for training and validation.
+Model Training: Train and test the defect detection model using the train_and_test.ipynb notebook under the examples/defect_detection_examples directory. This notebook will guide you through the model training process and save the trained models in the trained_models directory under cloudlabs.
 
-5. Train and test the model using the `train_and_test.ipynb` notebook under the `examples/defect_detection_examples` directory. The trained model will be saved in the `trained_models` directory under `cloudlabs`.
+Detect Unseen Defects: Use the trained model to detect unseen defects in new images using the detect_unseen.ipynb notebook under the examples/defect_detection_examples directory. This notebook will load the trained model and detect defects in the provided test images.
 
-6. Use the trained model to detect unseen defects in new images using the `detect_unseen.ipynb` notebook under the `examples/defect_detection_examples` directory. This notebook will load the trained model and detect defects in the provided test images.
+Camera Calibration
+The camera calibration module allows you to calibrate a camera used for recording sewer pipe images. It provides two calibration methods: Checkerboard and Box. Follow the steps below to calibrate the camera:
 
-### Camera Calibration
+Checkerboard Calibration: Capture an image of a checkerboard using the same camera used for recording the sewer pipe images. Run the calib_checkerboard.ipynb notebook under the examples/camera_calibration_examples directory. This notebook will calibrate the camera using the captured checkerboard image and provide the camera matrix and distortion coefficients.
 
-1. For camera calibration, two methods are available: Checkerboard and Box.
+Box Calibration: If a checkerboard image is not available, you can use the Box method. This method requires images of a known-sized object (e.g., a reference joint) captured from different distances. Run the calib_box.ipynb notebook under the examples/camera_calibration_examples directory to calibrate the camera using this method. The notebook will guide you through the calibration process.
 
-   - **Checkerboard**: Capture an image of a checkerboard using the same camera used for recording the sewer pipe images. Run the `calib_checkerboard.ipynb` notebook under the `examples/camera_calibration_examples` directory. This notebook will calibrate the camera using the captured checkerboard image and provide the camera matrix and distortion coefficients.
+Object Size Estimation
+The object size estimation module allows you to estimate the size of objects in sewer pipe images. Follow the steps below:
 
-   - **Box**: If a checkerboard image is not available, you can use the Box method. This method requires images of a known-sized object (e.g., a reference joint) captured from different distances. Run the `calib_box.ipynb` notebook under the `examples/camera_calibration_examples` directory to calibrate the camera using this method. The notebook will guide you through the calibration process.
+Focal Length Determination: Determine the focal length of the camera used for capturing the images. This information is crucial for accurate size estimation.
 
-### Object Size Estimation
+Reference Object Selection: Identify a reference object in the sewer pipe images with a known size. Joints in CCTV images of sewer pipes are commonly used as reference objects.
 
-To estimate the size of objects in sewer pipe images:
+Size Estimation: Run the object_size.ipynb notebook under the examples/object_size_estimation_examples directory. This notebook will estimate the size of objects in the images based on the known size of the reference object and the camera's focal length.
 
-1. Determine the focal length of the camera used for capturing the images. This information is required for accurate size estimation.
+Data and Examples
+For sample data and detailed examples on how to use the Sewer Defects Processing Project, please refer to the examples directory in the repository. It contains step-by-step notebooks and scripts for defect detection, camera calibration, and object size estimation.
 
-2. Identify a reference object in the sewer pipe images with a known size. Joints in CCTV images of sewer pipes are commonly used as reference objects.
-
-3. Run the `object_size.ipynb` notebook under the `examples/object_size_estimation_examples` directory. This notebook will estimate the size of objects in the images based on the known size of the reference object and the camera focal length.
-
-## Data and Examples
-
-For sample data and examples on how to use the Sewer Defects Processing Project, please refer to the [`examples`](./examples) directory in the repository. It contains step-by-step notebooks and scripts for defect detection, camera calibration, and object size estimation.
-
-## License
-
-This project is licensed under the [MIT License](./LICENSE). Feel free to use and modify the code according to your needs.
+License
+This project is licensed under the MIT License. Feel free to use and modify the code according to your needs.

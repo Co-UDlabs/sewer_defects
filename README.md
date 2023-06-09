@@ -1,8 +1,6 @@
 # Sewer Defects
 
-![License](https://img.shields.io/github/license/ehsankazemi47/sewer_defects)
-
-This Python project repository focuses on processing CCTV images of sewer pipes and provides multiple functionalities, including defect detection using the YOLO v8 model, camera calibration, and object size estimation. The project utilizes the Ultralytics YOLO v8 model for defect detection and provides modules for camera calibration using the Checkerboard and Box methods. It also offers object size estimation by leveraging a reference object in the video.
+This Python project repository focuses on processing CCTV images of sewer pipes and provides multiple functionalities, including automated defect detection, camera calibration, and defect size estimation. The project utilizes the Ultralytics YOLO v8 model for defect detection and provides modules for camera calibration using the 'Checkerboard' and 'Box' methods. It also offers object size estimation by leveraging a reference object in the video.
 
 ## Structure
 
@@ -15,40 +13,43 @@ sewer_defects/
 │ ├── examples/
 │ │ ├── camera_calibration_examples/
 │ │ │ ├── calib_box.ipynb
-│ │ │ ├── calib_checkerboard.ipynb
+│ │ │ └── calib_checkerboard.ipynb
 │ │ ├── defect_detection_examples/
 │ │ │ ├── check_data.ipynb
 │ │ │ ├── check_data.py
 │ │ │ ├── prepare_data.ipynb
 │ │ │ ├── prepare_data.py
 │ │ │ ├── train_and_test.ipynb
-│ │ │ ├── detect_unseen.ipynb
+│ │ │ └── detect_unseen.ipynb
 │ │ ├── object_size_estimation_examples/
 │ │ │ ├── object_size.ipynb
-│ │ │ ├── object_size.py
-├── src/
-│ ├── defect_detection/
-│ │ ├── init.py
-│ │ ├── check_data.py
-│ │ ├── prepare_data.py
-│ │ ├── model_training.py
-│ │ ├── prediction.py
-│ ├── camera_calibration/
-│ │ ├── init.py
-│ │ ├── calib_box.py
-│ │ ├── calib_checkerboard.py
-│ ├── object_size_estimation/
-│ ├── init.py
-│ ├── distance_and_size.py
-│ ├── object_size.py
-├── trained_models/
+│ │ │ └── object_size.py
+| ├── src/
+│ | ├── defect_detection/
+│ │ | ├── init.py
+│ │ | ├── check_data.py
+│ │ | ├── prepare_data.py
+│ │ | ├── model_training.py
+│ │ | └── prediction.py
+│ | ├── camera_calibration/
+│ | │ ├── init.py
+│ | │ ├── calib_box.py
+│ | │ └── calib_checkerboard.py
+│ | ├── object_size_estimation/
+│ | ├── init.py
+│ | ├── distance_and_size.py
+│ | └── object_size.py
+| └── trained_models/
 ├── ultralytics/
-├── assets/
-├── models/
-├── yolo/
-├── tracker/
-├── hub/
-├── nn/
+| ├── assets/
+| ├── models/
+| ├── yolo/
+| ├── tracker/
+| ├── hub/
+| └── nn/
+├── init.py
+├── requirements.txt
+└── LICENSE
 ```
 
 ## Functionality

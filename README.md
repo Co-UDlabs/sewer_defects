@@ -81,15 +81,51 @@ To measure the size of an object, follow these steps:
 - Calibrate the camera (if the focal length is unknown) using either the `calib_checkerboard.ipynb` or `calib_box.ipynb` notebook, depending on the availability of a checkerboard image.
 - Use the `object_size.ipynb` notebook or the `object_size.py` GUI provided in the `object_size_estimation_examples` folder to estimate the size of an object based on the known size of a reference object, such as a joint. This functionality requires the focal length of the camera and a reference object in the video.
 
-## Examples
+## Functionality
 
-The `examples` folder contains Jupyter notebooks (`.ipynb`) and Python GUI (`.py`) files demonstrating how to use the different functionalities of the project. The notebooks provide step-by-step instructions and can be modified for specific applications.
+### 1. Defect Detection
 
-To use the provided examples:
+To use the defect detection functionality, follow these steps:
 
-1. Clone this repository to your local machine.
+1. Clone the repository to your local machine.
 2. Install the required dependencies mentioned in the `requirements.txt` file.
-3. Follow the instructions in each example file to run the desired functionality.
+3. Navigate to the `sewer_defects/examples/defect_detection_examples` folder.
+4. Open the `check_data.ipynb` notebook or run the `check_data.py` GUI.
+   - This will display the labeled images along with their bounding boxes to verify the correctness of the data.
+5. Once you have verified the data, open the `prepare_data.ipynb` notebook or run the `prepare_data.py` GUI.
+   - This will split the data into training, validation, and test subsets and copy them into the `data` folder under `cloudlabs`.
+   - Modify the `data.yaml` file in the `data` folder according to your dataset.
+6. To train and test the defect detection model, open the `train_and_test.ipynb` notebook in the `defect_detection_examples` folder.
+   - Follow the instructions provided in the notebook to train the model using the prepared data and evaluate its performance on the test set.
+   - The trained models will be saved under `cloudlabs/trained_models`.
+7. To predict defects in unseen images, open the `detect_unseen.ipynb` notebook in the `defect_detection_examples` folder.
+   - Modify the paths to the trained model and the unseen images, then run the notebook.
+   - The predicted defects will be displayed along with their confidence scores.
+
+### 2. Camera Calibration
+
+To calibrate the camera using the provided methods, follow these steps:
+
+1. Collect images or videos for camera calibration.
+2. Navigate to the `sewer_defects/examples/camera_calibration_examples` folder.
+3. To calibrate the camera using a checkerboard image, open the `calib_checkerboard.ipynb` notebook.
+   - Follow the step-by-step instructions provided in the notebook to calibrate the camera and obtain the calibration matrix.
+4. To calibrate the camera using a labeled object with a known size, open the `calib_box.ipynb` notebook.
+   - Follow the instructions in the notebook to calibrate the camera and obtain the calibration matrix.
+
+### 3. Object Size Estimation
+
+To estimate the size of an object, follow these steps:
+
+1. Ensure that the camera has been calibrated using either the checkerboard or box method. If the focal length is unknown, follow the camera calibration steps mentioned above.
+2. Collect a video containing the reference object (e.g., a joint) and a video of the object whose size you want to measure.
+3. Navigate to the `sewer_defects/examples/object_size_estimation_examples` folder.
+4. Open the `object_size.ipynb` notebook or run the `object_size.py` GUI.
+   - Modify the paths to the calibrated camera parameters and the video containing the reference object.
+   - Follow the instructions in the notebook or GUI to estimate the size of the object based on the known size of the reference object.
+
+Please note that for each functionality, there are additional files and configurations that may need to be adjusted based on your specific dataset and requirements.
+
 
 ## Data
 

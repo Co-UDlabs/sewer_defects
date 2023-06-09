@@ -1,147 +1,120 @@
+# Sewer Defects Processing Project
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE)
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Functionalities](#functionalities)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+  - [Defect Detection](#defect-detection)
+  - [Camera Calibration](#camera-calibration)
+  - [Object Size Estimation](#object-size-estimation)
+- [Data and Examples](#data-and-examples)
+- [License](#license)
+
+## Introduction
+
+The Sewer Defects Processing Project is a Python-based project designed for processing CCTV images of sewer pipes. It aims to provide functionalities for detecting defects, calibrating cameras, and estimating object sizes in the captured images. This README file provides an overview of the project, its functionalities, and instructions on how to use them effectively.
+
+## Functionalities
+
+1. **Defect Detection**: The main functionality of the project is to use the YOLO v8 model for detecting defects in sewer pipes. It leverages the labeled images of sewer defects to train a deep learning model using YOLO v8. The trained model can then be used to detect defects in new images of sewer pipes. The YOLO v8 implementation from Ultralytics is utilized for this purpose. You can find the YOLO v8 model [here](https://github.com/ultralytics/ultralytics), and the YoloLabel tool for labeling images [here](https://github.com/developer0hye/Yolo_Label).
+
+2. **Camera Calibration**: The project provides functionality to calibrate a camera used for recording the sewer pipe images. Camera calibration is useful when the camera specifications, particularly the focal length, are unknown. The project offers two calibration methods:
+   - **Checkerboard**: This method calibrates the camera using an image of a checkerboard captured by the camera. The calibration process is implemented in the `calib_checkerboard.py` module.
+   - **Box**: If a checkerboard image is not available, the "Box" method can be used to calibrate the camera. It involves labeling an object with a known size and using images of the object from different distances. The `calib_box.py` module handles the calibration process for both videos and groups of still images.
+
+3. **Object Size Estimation**: The project includes modules for measuring the size of objects in the sewer pipe images. This functionality is particularly useful for mapping detected defects to standard defect classifications based on their sizes and positions. The object size estimation requires the focal length of the camera and a reference object in the video. Joints in CCTV images of sewer pipes are commonly used as reference objects since their size is usually known. The `object_size.py` module estimates the size of objects based on the known size of the reference object.
+
+## Project Structure
+
+The project repository has the following structure:
 
 sewer_defects/
-+-- coudlabs/
-¦   +-- data/
-¦   +-- examples/
-¦   ¦   +-- camera_calibration_examples/
-¦   ¦   ¦   +-- box.ipynb
-¦   ¦   ¦   +-- box.exe
-¦   ¦   ¦   +-- checkerboard.ipynb
-¦   ¦   ¦   +-- checkerboard.exe
-¦   ¦   +-- defect_detection_examples/
-¦   ¦   ¦   +-- check_data.ipynb
-¦   ¦   ¦   +-- check_data.exe
-¦   ¦   ¦   +-- prepare_data.ipynb
-¦   ¦   ¦   +-- prepare_data.exe
-¦   ¦   ¦   +-- train_and_test.ipynb
-¦   ¦   ¦   +-- train_and_test.exe
-¦   ¦   ¦   +-- detect_unseen.ipynb
-¦   ¦   ¦   +-- detect_unseen.exe
-¦   ¦   +-- object_size_estimation_examples/
-¦   ¦       +-- object_size.ipynb
-¦   ¦       +-- object_size.exe
-¦   +-- src/
-¦   ¦   +-- defect_detection/
-¦   ¦   ¦   +-- __init__.py
-¦   ¦   ¦   +-- check_data.py
-¦   ¦   ¦   +-- prepare_data.py
-¦   ¦   ¦   +-- model_training.py
-¦   ¦   ¦   +-- prediction.py
-¦   ¦   +-- camera_calibration/
-¦   ¦   ¦   +-- __init__.py
-¦   ¦   ¦   +-- camera_calib_box.py
-¦   ¦   ¦   +-- camera_calib_checkerboard.py
-¦   ¦   +-- object_size_estimation/
-¦   ¦       +-- __init__.py
-¦   ¦       +-- distance_and_size.py
-¦   ¦       +-- object_size.py
-¦   +-- trained_models/
++-- cloudlabs/
+¦ +-- data/
+¦ +-- examples/
+¦ ¦ +-- camera_calibration_examples/
+¦ ¦ ¦ +-- calib_box.ipynb
+¦ ¦ ¦ +-- calib_checkerboard.ipynb
+¦ ¦ +-- defect_detection_examples/
+¦ ¦ ¦ +-- check_data.ipynb
+¦ ¦ ¦ +-- check_data.py
+¦ ¦ ¦ +-- prepare_data.ipynb
+¦ ¦ ¦ +-- prepare_data.py
+¦ ¦ ¦ +-- train_and_test.ipynb
+¦ ¦ ¦ +-- detect_unseen.ipynb
+¦ ¦ +-- object_size_estimation_examples/
+¦ ¦ +-- object_size.ipynb
+¦ ¦ +-- object_size.py
+¦ +-- src/
+¦ ¦ +-- defect_detection/
+¦ ¦ ¦ +-- init.py
+¦ ¦ ¦ +-- check_data.py
+¦ ¦ ¦ +-- prepare_data.py
+¦ ¦ ¦ +-- model_training.py
+¦ ¦ ¦ +-- prediction.py
+¦ ¦ +-- camera_calibration/
+¦ ¦ ¦ +-- init.py
+¦ ¦ ¦ +-- calib_box.py
+¦ ¦ ¦ +-- calib_checkerboard.py
+¦ ¦ +-- object_size_estimation/
+¦ ¦ +-- init.py
+¦ ¦ +-- distance_and_size.py
+¦ ¦ +-- object_size.py
+¦ +-- trained_models/
 +-- ultralytics/
-    +-- assets/
-    +-- models/
-    +-- yolo/
++-- assets/
++-- models/
++-- yolo/
++-- tracker/
++-- hub/
++-- nn/
 
 
+The YOLO model is located under the `ultralytics` directory, while the sewer defect models are located under the `cloudlabs` directory. The `src` directory contains the source code for the defect detection, camera calibration, and object size estimation modules.
 
+## Usage
 
+To effectively use the functionalities provided by the Sewer Defects Processing Project, follow the instructions outlined below.
 
+### Defect Detection
 
-# Camera Calibration Model
+1. Collect images of sewer defects and label them using the YoloLabel tool. The defects are categorized as follows: 'obstacle - Block', 'obstacle - deposit', 'obstacle - tree root', 'joint', 'crack', 'damage - hole', 'damage - severe', and 'corrosion'. The defect IDs used in the model functions are `ObsBlc`, `ObsDep`, `ObsRot`, `Jnt`, `Crk`, `DmgHol`, `DmgSev`, and `Cor`, respectively.
 
-This repository contains two camera calibration models: the **Box Model** and the **Checkerboard Model**. These models are used to calibrate a camera using images or video frames.
+2. Create a folder on your computer to store the labeled images and labels (text files). Name the folder something like 'data' or 'sewer defect data', and create a subfolder named 'labelled_images' inside it.
 
-## Box Model
+3. Use the `check_data.ipynb` notebook or the `check_data.py` GUI under the `examples/defect_detection_examples` directory to check the data for any issues or inconsistencies. This step ensures that your labeled data is in the correct format and ready for model training.
 
-The Box Model performs camera calibration by using images of a an object (like a joint inside sewer pipe) with a box drawn around it. The dimensions of the object (width and height) need to be provided as inputs. The calibration process involves the following steps:
+4. Prepare the data for model training using the `prepare_data.ipynb` notebook or the `prepare_data.py` GUI under the `examples/defect_detection_examples` directory. This process will split the data into three subsets: training, validation, and testing. The subsets will be copied into the 'data' folder under `cloudlabs`. Modify the `data.yaml` file under the `data` folder accordingly. The YOLO model will read this file to use the data for training and validation.
 
-1. Read the images and corresponding label information from a text file (if input is a folder) or a video file (if input is a video).
-2. Extract the corner information from the label file and calculate the image points (2D points) in pixels.
-3. Plot the corners on the image to visualize the detected corners.
-4. Store the object points (grid) and image points for all calibration frames.
-5. Perform camera calibration using OpenCV's `calibrateCamera` function.
-6. Print the camera matrix and distortion coefficients obtained from the calibration process.
+5. Train and test the model using the `train_and_test.ipynb` notebook under the `examples/defect_detection_examples` directory. The trained model will be saved in the `trained_models` directory under `cloudlabs`.
 
-## Checkerboard Model
+6. Use the trained model to detect unseen defects in new images using the `detect_unseen.ipynb` notebook under the `examples/defect_detection_examples` directory. This notebook will load the trained model and detect defects in the provided test images.
 
-The Checkerboard Model performs camera calibration using a checkerboard pattern. The calibration process involves the following steps:
+### Camera Calibration
 
-1. Find the checkerboard corners in the input images or video frames.
-2. Refine the pixel coordinates for the detected corners.
-3. Draw and display the detected corners on the images or video frames.
-4. Store the 3D points (real-world coordinates) and 2D points (pixel coordinates) for all detected corners.
-5. Perform camera calibration using OpenCV's `calibrateCamera` function.
-6. Print the camera matrix, distortion coefficients, rotation vectors, and translation vectors obtained from the calibration process.
+1. For camera calibration, two methods are available: Checkerboard and Box.
 
-## Example Usage
+   - **Checkerboard**: Capture an image of a checkerboard using the same camera used for recording the sewer pipe images. Run the `calib_checkerboard.ipynb` notebook under the `examples/camera_calibration_examples` directory. This notebook will calibrate the camera using the captured checkerboard image and provide the camera matrix and distortion coefficients.
 
-To use the Camera Calibration model, you can follow the steps below:
+   - **Box**: If a checkerboard image is not available, you can use the Box method. This method requires images of a known-sized object (e.g., a reference joint) captured from different distances. Run the `calib_box.ipynb` notebook under the `examples/camera_calibration_examples` directory to calibrate the camera using this method. The notebook will guide you through the calibration process.
 
-1. Prepare the required input files:
+### Object Size Estimation
 
-   - <ins>Box Method</ins>:
-     - A folder containing images of (or a video of) a known-size calibration object (e.g., a joint) taken from different distances.
-     - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place the images in a local folder.
+To estimate the size of objects in sewer pipe images:
 
-   - <ins>Checkerboard Method</ins>:
-     - A video file containing frames of (or a folder of still images of) a checkerboard pattern placed in different positions and orientations.
-     - Download the example data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place the video file in a local directory.
+1. Determine the focal length of the camera used for capturing the images. This information is required for accurate size estimation.
 
-2. Install the necessary dependencies:
-   - OpenCV: `pip install opencv-python`
+2. Identify a reference object in the sewer pipe images with a known size. Joints in CCTV images of sewer pipes are commonly used as reference objects.
 
-3. Run the model using the provided examples:
-   - <ins>Box Method</ins>:
-     - The notebook example demonstrates how to calibrate the camera using the box method.
-     - You can find the notebook example at [box_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/box_notebook.ipynb).
-     - Before running the notebook, download the example images from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1uzGhAWrRaIO_u3EYJMSJqwj3Aho5RdIg) and place them in a local folder.
+3. Run the `object_size.ipynb` notebook under the `examples/object_size_estimation_examples` directory. This notebook will estimate the size of objects in the images based on the known size of the reference object and the camera focal length.
 
-   - <ins>Checkerboard Method</ins>:
-     - The notebook example demonstrates how to calibrate the camera using the checkerboard method.
-     - You can find the notebook example at [checkerboard_notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/checkerboard_notebook.ipynb).
-     - Before running the notebook, download the example video from [this Google Drive link](https://drive.google.com/drive/u/1/folders/1xCasZSRDQwJzxzs-_qgVZaTP7_6k07I6) and place it in a local directory (<em>in this example, make sure that you use the black and white video</em>).
+## Data and Examples
 
-  
+For sample data and examples on how to use the Sewer Defects Processing Project, please refer to the [`examples`](./examples) directory in the repository. It contains step-by-step notebooks and scripts for defect detection, camera calibration, and object size estimation.
 
---------------------------------------------
-# Object Size Estimation Model
+## License
 
-The Object Size Estimation model is designed to estimate the real size of an object in a video based on the real size of a reference object present alongside it. The model requires the focal length of the camera to be known, which can be estimated using the Camera Calibration model.
-
-## Structure
-
-The model consists of two main components:
-
-1. `object_size.py`: This script processes a video file containing frames of objects and their respective bounding box coordinates. It calculates the distances and sizes of objects in the video based on a reference object of known size. The calculated distances and sizes are then overlaid on the video frames and saved as an output video.
-
-2. `distance_and_size.py`: This module provides the necessary functions to calculate the size ratios, distances, and real sizes of objects based on the reference object's height and the camera's focal length.
-
-## Example Usage
-
-To use the Object Size Estimation model, you can follow the steps below:
-
-1. Prepare the required input files:
-   - Input video file: A video file containing frames of objects and their bounding box coordinates.
-   - Reference object's data file: A text file containing data about the reference object, including frame numbers and bounding box coordinates.
-   - Other object's data file: A text file containing data about the other object, including frame numbers and bounding box coordinates.
-
-2. Install the necessary dependencies:
-   - OpenCV: `pip install opencv-python`
-
-3. Run the model using the provided examples:
-   - Example 1: <ins>Jupyter Notebook</ins>
-     - The notebook example demonstrates how to use the Object Size Estimation model in a step-by-step manner.
-     - Download examplar data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) (where a video and two text files are stored) and place them in a folder on your local machine. The video shows two object, the larger one is the reference object with known height, and the smaller one is the target object of which height is to be estimated. The text files contain coordinates of the bounding boxes around the objects at frames where the boxes are present.
-     - Use the notebook example at [notebook.ipynb](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/object_size_estimation_examples/notebook.ipynb) and set `folder` to where you have put the data on your local machine.
-     - Run the notebook. A video will be saved in the same folder with the estimated size of the target object and its distance to the camera, both displayed on the image.
-
-   - Example 2: <ins>GUI Application</ins>
-     - The GUI example provides a user-friendly interface for running the Object Size Estimation model.
-     - Download examplar data from [this Google Drive link](https://drive.google.com/drive/u/1/folders/13TPH52FVjIPhvE-GOP4AAmp0haUrH8_z) (where a video and two text files are stored) and place them in a folder on your local machine. The video shows two object, the larger one is the reference object with known height, and the smaller one is the target object of which height is to be estimated. The text files contain coordinates of the bounding boxes around the objects at frames where the boxes are present.
-     - Run the 'gui.exe' file in the folder [gui](https://github.com/ehsankazemi47/sewer_defects/tree/coudlabs/coudlabs/examples/object_size_estimation_examples/gui).
-     - Set the location of the data files and specify the real size of the reference object and the focal length of the camera in the gui window and press the run the model button. A video will be saved in the same folder with the estimated size of the target object and its distance to the camera, both displayed on the image.
-
-----------------------------------------------
-# License
-
-This project is licensed under the [License?](LICENSE).
+This project is licensed under the [MIT License](./LICENSE). Feel free to use and modify the code according to your needs.

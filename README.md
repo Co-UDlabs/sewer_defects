@@ -84,8 +84,6 @@ To measure the size of an object, follow these steps:
 
 ## Usage
 
-## Functionality
-
 ### 1. Defect Detection
 
 To use the defect detection functionality, follow these steps:

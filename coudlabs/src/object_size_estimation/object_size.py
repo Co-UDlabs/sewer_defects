@@ -36,7 +36,7 @@ Example usage:                                                           \
   and other object's file.                                               \
 - Specify the real size of the reference object and the focal length of  /
   the camera.                                                            \
-- Call the 'map' function with the provided arguments to process the     /
+- Call the 'mapp' function with the provided arguments to process the     /
   video and generate the output.                                         \
 ...                                                                      /
 Note: Ensure that the required modules and files are accessible by       \
@@ -49,16 +49,10 @@ import sys
 import os
 import cv2
 
-# Relative path
-script_path = os.path.abspath(__file__)
-project_folder = os.path.dirname(os.path.dirname(script_path))
-model_folder = os.path.join(project_folder, 'coudlabs/src/object size estimation model')
-sys.path.append(model_folder)
-
 # Import 'distsize' function
-from distance_and_size import distsize_I as distsize
+from .distance_and_size import distsize_I as distsize
 
-def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length):
+def mapp(video_path, file_path_ref, file_path_other, real_size_ref, focal_length):
     """
     Maps the reference object and other object in a video, calculates distances and sizes, and saves the output video.
 
@@ -75,6 +69,14 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
     font = cv2.FONT_HERSHEY_DUPLEX  # Font style for text overlay
     font_scale = 0.5  # Font scale for text overlay
     font_thickness = 1  # Thickness of the font strokes
+
+    # Check if the input paths exist
+    if not os.path.exists(video_path):
+        raise FileNotFoundError(f"Video file not found: {video_path}")
+    if not os.path.exists(file_path_ref):
+        raise FileNotFoundError(f"Reference object's data file not found: {file_path_ref}")
+    if not os.path.exists(file_path_other):
+        raise FileNotFoundError(f"Other object's data file not found: {file_path_other}")
 
     # Read the video
     cap = cv2.VideoCapture(video_path)
@@ -193,17 +195,6 @@ def map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
     out.release()
     cv2.destroyAllWindows()
 
-    print(f"Output video saved to: {output_path}")
     estimated_size = estimated_size / nn
     print(f"Estimated size of the object: {estimated_size:.2f} m")
-
-
-# Example usage
-#folder = "C:/Ehsan/sewer_defects/coudlabs/examples/estimate size using a reference object/04/"
-#video_path = folder + "video.mp4"
-#file_path_ref = folder + "ref.txt"
-#file_path_other = folder + "other.txt"
-#real_size_ref = 0.212  # Real size of the reference object in meters
-#focal_length = 355  # Focal length of the camera in pixels
-
-#map(video_path, file_path_ref, file_path_other, real_size_ref, focal_length)
+    print(f"Output video saved to: {output_path}")

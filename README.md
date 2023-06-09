@@ -1,3 +1,52 @@
+
+
+sewer_defects/
++-- coudlabs/
+¦   +-- data/
+¦   +-- examples/
+¦   ¦   +-- camera_calibration_examples/
+¦   ¦   ¦   +-- box.ipynb
+¦   ¦   ¦   +-- box.exe
+¦   ¦   ¦   +-- checkerboard.ipynb
+¦   ¦   ¦   +-- checkerboard.exe
+¦   ¦   +-- defect_detection_examples/
+¦   ¦   ¦   +-- check_data.ipynb
+¦   ¦   ¦   +-- check_data.exe
+¦   ¦   ¦   +-- prepare_data.ipynb
+¦   ¦   ¦   +-- prepare_data.exe
+¦   ¦   ¦   +-- train_and_test.ipynb
+¦   ¦   ¦   +-- train_and_test.exe
+¦   ¦   ¦   +-- detect_unseen.ipynb
+¦   ¦   ¦   +-- detect_unseen.exe
+¦   ¦   +-- object_size_estimation_examples/
+¦   ¦       +-- object_size.ipynb
+¦   ¦       +-- object_size.exe
+¦   +-- src/
+¦   ¦   +-- defect_detection/
+¦   ¦   ¦   +-- __init__.py
+¦   ¦   ¦   +-- check_data.py
+¦   ¦   ¦   +-- prepare_data.py
+¦   ¦   ¦   +-- model_training.py
+¦   ¦   ¦   +-- prediction.py
+¦   ¦   +-- camera_calibration/
+¦   ¦   ¦   +-- __init__.py
+¦   ¦   ¦   +-- camera_calib_box.py
+¦   ¦   ¦   +-- camera_calib_checkerboard.py
+¦   ¦   +-- object_size_estimation/
+¦   ¦       +-- __init__.py
+¦   ¦       +-- distance_and_size.py
+¦   ¦       +-- object_size.py
+¦   +-- trained_models/
++-- ultralytics/
+    +-- assets/
+    +-- models/
+    +-- yolo/
+
+
+
+
+
+
 # Camera Calibration Model
 
 This repository contains two camera calibration models: the **Box Model** and the **Checkerboard Model**. These models are used to calibrate a camera using images or video frames.

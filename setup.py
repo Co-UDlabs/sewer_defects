@@ -63,3 +63,43 @@ setup(
     keywords='machine-learning, deep-learning, vision, ML, DL, AI, YOLO, YOLOv3, YOLOv5, YOLOv8, HUB, Ultralytics',
     entry_points={
         'console_scripts': ['yolo = ultralytics.yolo.cfg:entrypoint', 'ultralytics = ultralytics.yolo.cfg:entrypoint']})
+
+
+# sewer_defects setup
+
+import subprocess
+from setuptools import setup, find_packages
+
+# Function to get the latest version from GitHub tags
+def get_latest_version():
+    try:
+        latest_tag = subprocess.check_output(['git', 'describe', '--tags']).decode().strip()
+        version = re.match(r'v(\d+\.\d+\.\d+)', latest_tag)
+        if version:
+            return version.group(1)
+    except Exception as e:
+        print(f"Failed to retrieve the latest version from GitHub tags: {e}")
+    return '0.1.0'  # Default version if retrieval fails
+
+# Function to extract requirements from ultralytics_setup.py
+def get_ultralytics_requirements():
+    with open('ultralytics_setup.py', 'r') as f:
+        content = f.read()
+        requirements_match = re.search(r"REQUIREMENTS = \[(.*?)\]", content, re.DOTALL)
+        if requirements_match:
+            requirements_str = requirements_match.group(1)
+            requirements = re.findall(r"\'(.*?)\'", requirements_str)
+            return requirements
+    return []
+
+setup(
+    name='sewer_defects',
+    version=get_latest_version(),
+    description='Package for sewer defect detection',
+    packages=find_packages(),
+    install_requires=get_ultralytics_requirements() + [
+        # 'extra-requirement1',
+        # 'extra-requirement2',
+        # Add your extra requirements specific to sewer_defects here
+    ],
+)

@@ -2,6 +2,7 @@
 
 This Python project repository focuses on processing CCTV images of sewer pipes and provides multiple functionalities, including automated defect detection, camera calibration, and defect size estimation. The project utilizes the Ultralytics YOLO v8 model for defect detection and provides modules for camera calibration using the 'Checkerboard' and 'Box' methods. It also offers object size estimation by leveraging a reference object in the video.
 
+
 ## Structure
 
 The repository has the following structure:
@@ -52,6 +53,7 @@ sewer_defects/
 └── LICENSE
 ```
 
+
 ## Functionality
 
 ### 1. Defect Detection
@@ -88,6 +90,7 @@ To measure the size of an object, follow these steps:
 3.1. **Camera specifications**. Calibrate the camera (if the focal length is unknown) using one of the methods presented in the previous  section, depending on the availability of a checkerboard image.
 
 3.2. **Size estimation using a reference object**. Use the [`object_size.ipynb`](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/object_size_estimation_examples/object_size.ipynb) notebook or the [`object_size.py`](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/object_size_estimation_examples/object_size.py) GUI provided in the `coudlabs/examples/object_size_estimation_examples` folder to estimate the size of an object based on the known size of a reference object, such as a joint. This functionality requires the focal length of the camera and a reference object in the video. For running this module, an exe version of the GUI is also available at this [link](https://drive.google.com/file/d/1eyXLkkjrj9-Flr6CQTzy-hC2Ya4rijXf/view?usp=drive_link).
+
 
 ## Usage
 
@@ -134,13 +137,13 @@ To calibrate the camera using the provided methods, follow these steps:
    - Follow the step-by-step instructions provided in the notebook to calibrate the camera and obtain the calibration matrix.
    - **Input**: Path to image; checkerboard dimensions, real size of square on the checkerboard.
    - **Output**: Calibration matrix including focal length.
-You can use the data provided at this [link](https://drive.google.com/drive/folders/1Jd_tokxHcx2B3DwX9wiGJ3UBnIxShind?usp=drive_link) to examine the model usage.
+   - You can use the data provided at this [link](https://drive.google.com/drive/folders/1Jd_tokxHcx2B3DwX9wiGJ3UBnIxShind?usp=drive_link) to examine the model usage.
 
 4. To calibrate the camera using a labeled object with a known size (like a joint), open the [`calib_box.ipynb`](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/camera_calibration_examples/calib_box.ipynb) notebook.
    - Follow the instructions in the notebook to calibrate the camera and obtain the calibration matrix.
    - **Input**: Path to image; width and height of object.
    - **Output**: Calibration matrix including focal length.
-You can use the data provided at this [link](https://drive.google.com/drive/u/1/folders/1QI4C71A9831hVXz8YHqBPtTgtgactjVV) to examine the model usage.
+   - You can use the data provided at this [link](https://drive.google.com/drive/u/1/folders/1QI4C71A9831hVXz8YHqBPtTgtgactjVV) to examine the model usage.
 
 ### 3. Object Size Estimation
 
@@ -156,7 +159,7 @@ To estimate the size of an object, follow these steps:
      - Camera's focal length.
      - Real size of the reference object (e.g. diameter of a pipe as the height of a joint).
    - **Output**: Estimated size of the object.
-You can use the data provided at this [link](https://drive.google.com/drive/u/1/folders/1U2gcpszOSbs0goN-ymdrUqw5MvOlxQTJ) to test the model usage.
+   - You can use the data provided at this [link](https://drive.google.com/drive/u/1/folders/1U2gcpszOSbs0goN-ymdrUqw5MvOlxQTJ) to test the model usage.
 
 Please note that for each functionality, there are additional files and configurations that may need to be adjusted based on your specific dataset and requirements.
 
@@ -164,6 +167,7 @@ Please note that for each functionality, there are additional files and configur
 ## Data
 
 A few sample data are provided in this [Google Drive folder](https://drive.google.com/drive/u/1/folders/1BoLSWbCj6WimaW4-Wca3CPkpgW5HJUqH) for testing and experimentation purposes. Please note that the labeled images included in the dataset are a small sample and may not yield accurate results when training the defect detection model. However, these data are freely available for use, and as long as you cite this project, there are no copyright issues (see [project license](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE)).
+
 
 ## License
 

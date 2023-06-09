@@ -57,21 +57,16 @@ sewer_defects/
 
 The project utilizes the YOLO v8 model provided by Ultralytics for detecting defects in sewer pipes. To use this functionality, follow these steps:
 
-#### 1.1. Data collection & labelling
-Collect images of defects and label them using [YoloLabel](https://github.com/developer0hye/Yolo_Label).
+1.1. **Data collection & labelling**. Collect images of defects and label them using [YoloLabel](https://github.com/developer0hye/Yolo_Label).
 Create a folder on your computer named `data` or `sewer defect data` and store the labeled images and their corresponding label files in a subfolder named `labelled_images`.
 
-#### 1.2. Check labels
-Check the data using the `check_data.ipynb` notebook or the `check_data.py` GUI provided in the `examples` folder.
+1.2. **Check labels**. Check the data using the `check_data.ipynb` notebook or the `check_data.py` GUI provided in the `examples` folder.
 
-#### 1.3. Data preperation
-Prepare the data for model training using the `prepare_data.ipynb` notebook or the `prepare_data.py` GUI in the `examples` folder. This process splits the data into training, validation, and test subsets and copies them into the `data` folder under `cloudlabs`. Modify the `data.yaml` file in the `data` folder accordingly. The YOLO model will read this file for training and validation.
+1.3. **Data preperation**. Prepare the data for model training using the `prepare_data.ipynb` notebook or the `prepare_data.py` GUI in the `examples` folder. This process splits the data into training, validation, and test subsets and copies them into the `data` folder under `cloudlabs`. Modify the `data.yaml` file in the `data` folder accordingly. The YOLO model will read this file for training and validation.
 
-#### 1.4. Train & test
-Train and test the model using the `train_and_test.ipynb` notebook in the `examples` folder. The trained models will be saved under `cloudlabs/trained_models`.
+1.4. **Train & test**. Train and test the model using the `train_and_test.ipynb` notebook in the `examples` folder. The trained models will be saved under `cloudlabs/trained_models`.
 
-#### 1.5. Predcit
-To predict defects in unseen images, use the `detect_unseen.ipynb` notebook in the `examples` folder.
+1.5. **Predcit**. To predict defects in unseen images, use the `detect_unseen.ipynb` notebook in the `examples` folder.
 
 ### 2. Camera Calibration
 

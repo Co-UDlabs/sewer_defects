@@ -9,6 +9,7 @@ This Python project repository focuses on processing CCTV images of sewer pipes 
 The repository has the following structure:
 
 sewer_defects/
+<<<<<<< HEAD
 +-- cloudlabs/
 �   +-- data/
 �   +-- examples/
@@ -48,6 +49,47 @@ sewer_defects/
 +-- tracker/
 +-- hub/
 +-- nn/
+=======
+├── cloudlabs/
+│   ├── data/
+│   ├── examples/
+│   │   ├── camera_calibration_examples/
+│   │   │   ├── calib_box.ipynb
+│   │   │   ├── calib_checkerboard.ipynb
+│   │   ├── defect_detection_examples/
+│   │   │   ├── check_data.ipynb
+│   │   │   ├── check_data.py
+│   │   │   ├── prepare_data.ipynb
+│   │   │   ├── prepare_data.py
+│   │   │   ├── train_and_test.ipynb
+│   │   │   ├── detect_unseen.ipynb
+│   │   ├── object_size_estimation_examples/
+│   │   │   ├── object_size.ipynb
+│   │   │   ├── object_size.py
+├── src/
+│   ├── defect_detection/
+│   │   ├── __init__.py
+│   │   ├── check_data.py
+│   │   ├── prepare_data.py
+│   │   ├── model_training.py
+│   │   ├── prediction.py
+│   ├── camera_calibration/
+│   │   ├── __init__.py
+│   │   ├── calib_box.py
+│   │   ├── calib_checkerboard.py
+│   ├── object_size_estimation/
+│   ├── __init__.py
+│   ├── distance_and_size.py
+│   ├── object_size.py
+├── trained_models/
+├── ultralytics/
+├── assets/
+├── models/
+├── yolo/
+├── tracker/
+├── hub/
+├── nn/
+>>>>>>> documentation
 
 
 ## Functionality

@@ -72,11 +72,9 @@ Create a folder on your computer named `data` or `sewer defect data` and store t
 
 The project provides two methods for calibrating a camera: Checkerboard and Box. These methods are useful when the specifications, especially the focal length, of the camera recording the images are unknown.
 
-#### 2.1. Checkerboard method
-To calibrate the camera using a checkerboard image, use the `calib_checkerboard.ipynb` notebook in the `camera_calibration_examples` folder.
+2.1. **Checkerboard method**. To calibrate the camera using a checkerboard image, use the `calib_checkerboard.ipynb` notebook in the `camera_calibration_examples` folder.
 
-#### 2.2. Box method
-To calibrate the camera using a labeled object with a known size, use the `calib_box.ipynb` notebook in the `camera_calibration_examples` folder.
+2.2. **Box method**. To calibrate the camera using a labeled object with a known size, use the `calib_box.ipynb` notebook in the `camera_calibration_examples` folder.
 
 These calibration models can be applied to videos or groups of still images. The outputs of the models include the calibration matrix from which the focal length can be obtained.
 
@@ -86,11 +84,9 @@ The project provides modules for measuring the size of an object in a video. Thi
 
 To measure the size of an object, follow these steps:
 
-#### 3.1. Camera specifications
-Calibrate the camera (if the focal length is unknown) using either the `calib_checkerboard.ipynb` or `calib_box.ipynb` notebook, depending on the availability of a checkerboard image.
+3.1. **Camera specifications**. Calibrate the camera (if the focal length is unknown) using either the `calib_checkerboard.ipynb` or `calib_box.ipynb` notebook, depending on the availability of a checkerboard image.
 
-#### 3.2. Size estimation using a reference object
-Use the `object_size.ipynb` notebook or the `object_size.py` GUI provided in the `object_size_estimation_examples` folder to estimate the size of an object based on the known size of a reference object, such as a joint. This functionality requires the focal length of the camera and a reference object in the video.
+3.2. **Size estimation using a reference object**. Use the `object_size.ipynb` notebook or the `object_size.py` GUI provided in the `object_size_estimation_examples` folder to estimate the size of an object based on the known size of a reference object, such as a joint. This functionality requires the focal length of the camera and a reference object in the video.
 
 ## Usage
 

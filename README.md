@@ -1,3 +1,7 @@
+[![Co-UDlabs](https://img.shields.io/badge/Project-CoUDlabs-brightgreen.svg)](https://co-udlabs.eu/)
+[![License](https://img.shields.io/badge/License-Academic-blue.svg)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE)
+[![Citation](https://img.shields.io/badge/Acknowledgement-Cite-yellow)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/CITATION.cff)
+
 # Sewer Defects
 
 This Python project repository focuses on processing CCTV images of sewer pipes and provides multiple functionalities, including automated defect detection, camera calibration, and defect size estimation. The project utilizes the Ultralytics YOLO v8 model for defect detection and provides modules for camera calibration using the 'Checkerboard' and 'Box' methods. It also offers object size estimation by leveraging a reference object in the video.

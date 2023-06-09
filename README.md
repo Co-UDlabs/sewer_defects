@@ -56,14 +56,14 @@ sewer_defects/
 
 ### 1. Defect Detection
 
-The project utilizes the YOLO v8 model provided by Ultralytics for detecting defects in sewer pipes. To use this functionality, follow these steps:
+The project utilizes the YOLO v8 model provided by Ultralytics for detecting defects in sewer pipes. This model follows the following steps:
 
-1.1. **Data collection & labelling**. Collect images of defects and label them using [YoloLabel](https://github.com/developer0hye/Yolo_Label).
-Create a folder on your computer named `data` or `sewer defect data` and store the labeled images and their corresponding label files in a subfolder named `labelled_images`.
+1.1. **Data collection & labelling**. Collect images of defects in sewer pipes and label them using [YoloLabel](https://github.com/developer0hye/Yolo_Label). [This video](https://drive.google.com/file/d/1CTeDLK8DkOE8SMFm0joFSnadAJ92aY35/view?usp=drive_link) shows how YoloLabel can be used to label defects in CCTV images.
+Create a folder on your computer named something like `data` or `sewer defects data` and store the labeled images and their corresponding label files in a subfolder named `labelled_images`.
 
-1.2. **Check labels**. Check the data using the `check_data.ipynb` notebook or the `check_data.py` GUI provided in the `examples` folder.
+1.2. **Check labels**. Check the data using the [`check_data.ipynb`](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/defect_detection_examples/check_data.ipynb) notebook or the [`check_data.py`](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/defect_detection_examples/check_data.py) GUI provided in the `coudlabs/examples/defect_detection_examples` folder. An exe version of the GUI is available [here](https://drive.google.com/file/d/1L_W1-QtmBmi7BljkhNeRFYMS9lJUhPvv/view?usp=drive_link).
 
-1.3. **Data preperation**. Prepare the data for model training using the `prepare_data.ipynb` notebook or the `prepare_data.py` GUI in the `examples` folder. This process splits the data into training, validation, and test subsets and copies them into the `data` folder under `cloudlabs`. Modify the `data.yaml` file in the `data` folder accordingly. The YOLO model will read this file for training and validation.
+1.3. **Data preperation**. Prepare the data for model training using the [`prepare_data.ipynb`](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/defect_detection_examples/prepare_data.ipynb) notebook or the [`prepare_data.py`](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/examples/defect_detection_examples/prepare_data.py) GUI in the `coudlabs/examples/defect_detection_examples` folder. This process splits the data into training, validation, and test subsets and copies them into the [`data`](https://github.com/ehsankazemi47/sewer_defects/tree/coudlabs/coudlabs/data) folder under `cloudlabs`. Modify the [`data.yaml`](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/coudlabs/data/data.yaml) file in the `cudlabs/data` folder accordingly. The YOLO model will read this file for training and validation. In this file, you need to list the label names in the same order used in Section 1.1 to label the defect in the images. These labels in the pcurrent version of the model are `ObsPlc`, `ObsDep`, `ObsRot`, `Jnt`, `Crk`, `DmgHol`, `DmgSev` and `Cor` denoting Obstacle - block, Obstacle - deposited, Obstacle - tree root, Joint, Crack, Damage - hole, Damage - severe (deformed, collapsed) and Corrosion, respectively.
 
 1.4. **Train & test**. Train and test the model using the `train_and_test.ipynb` notebook in the `examples` folder. The trained models will be saved under `cloudlabs/trained_models`.
 

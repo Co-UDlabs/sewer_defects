@@ -1,0 +1,12 @@
+cff-version: 0.1.0
+
+message: "Cite this project as below."
+authors:
+  - family-names: Kazemi, Tait
+    given-names: Ehsan, Simon
+    affiliation: Civil & Structural Engineering Department, University of Sheffield
+    address: Sheffield, United Kingdom
+title: "sewer_defects"
+version: 3.0.0
+date-released: 2023-06-10
+url: "https://github.com/ehsankazemi47/sewer_defects"

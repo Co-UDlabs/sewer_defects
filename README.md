@@ -54,6 +54,7 @@ sewer_defects/
 | └── nn/
 ├── init.py
 ├── requirements.txt
+├── setup.py
 └── LICENSE
 ```
 

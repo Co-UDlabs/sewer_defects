@@ -1,5 +1,5 @@
-[![Co-UDlabs](https://img.shields.io/badge/Project:-CoUDlabs-brightgreen.svg)](https://co-udlabs.eu/)
-[![License](https://img.shields.io/badge/License:-Academic-blue.svg)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE)
+[![Co-UDlabs](https://img.shields.io/badge/Project:-CoUDlabs-blue.svg)](https://co-udlabs.eu/)
+[![License](https://img.shields.io/badge/License:-Academic-brightgreen.svg)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE)
 [![Citation](https://img.shields.io/badge/Acknowledgement:-Cite-yellow)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/CITATION.cff)
 
 # Sewer Defects

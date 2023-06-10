@@ -176,4 +176,4 @@ A few sample data are provided in this [Google Drive folder](https://drive.googl
 
 ## License
 
-This project is licensed under the [Co-UDlabs Project](https://co-udlabs.eu/). Users are permitted to use, modify, and distribute the codes and data for personal, educational, or commercial purposes and acknowledge this project by citing this repository as shown [here](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/CITATION.cff). The license of this repository can be read [here](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE).
+This project is licensed under the [Co-UDlabs Project](https://co-udlabs.eu/). Users are permitted to use, modify, and distribute the codes and data for personal, educational, or commercial purposes and acknowledge the project by [citing](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/CITATION.cff) this repository. The full license can be read [here](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE).

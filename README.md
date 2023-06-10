@@ -62,7 +62,7 @@ sewer_defects/
 
 ### 1. Defect Detection
 
-The project utilizes the YOLO v8 model provided by Ultralytics for detecting defects in sewer pipes. This model follows the following steps:
+The project utilizes the YOLO v8 model provided by Ultralytics for detecting defects in sewer pipes (for YOLO see [here](https://github.com/ultralytics/ultralytics)). The model follows these steps:
 
 1.1. **Data collection & labelling**. Collect images of defects in sewer pipes and label them using [YoloLabel](https://github.com/developer0hye/Yolo_Label). [This video](https://drive.google.com/file/d/1CTeDLK8DkOE8SMFm0joFSnadAJ92aY35/view?usp=drive_link) shows how YoloLabel can be used to label defects in CCTV images.
 Create a folder on your computer named something like `data` or `sewer defects data` and store the labeled images and their corresponding label files in a subfolder named `labelled_images`.

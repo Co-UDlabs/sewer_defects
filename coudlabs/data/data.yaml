@@ -1,5 +1,4 @@
-
-path: C:/Ehsan/sewer_defects/coudlabs/data/set01  # dataset root dir
+path: ../data/230610  # dataset root dir
 train: images/training  # train images (relative to 'path')
 val: images/validation  # val images (relative to 'path')
 test: images/test # test images (optional)

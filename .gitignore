@@ -164,6 +164,8 @@ coudlabs/data/*
 !.gitignore
 !*.yaml
 
-#ignore predictions
+# ignore trained_models
 coudlabs/trained_models/
+
+# ignore examples?
 #coudlabs/examples/

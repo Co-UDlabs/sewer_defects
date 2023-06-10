@@ -2,11 +2,17 @@ cff-version: 0.1.0
 
 message: "Cite this project as below."
 authors:
-  - family-names: Kazemi, Tait
-    given-names: Ehsan, Simon
-    affiliation: Civil & Structural Engineering Department, University of Sheffield
-    address: Sheffield, United Kingdom
-title: "sewer_defects"
+  - family-names: Kazemi
+    given-names: Ehsan
+    affiliation: "University of Sheffield"
+    email: "ehsan.kazemi@intertek.com"
+    website: www.linkedin.com/in/ehsankazemi47
+  - family-names: Tait
+    given-names: Simon
+    affiliation: "University of Sheffield"
+    email: "s.tait@sheffield.ac.uk"
+    website: www.sheffield.ac.uk/civil/people/academic/simon-tait
+title: "Automated detection of in-pipe defects in CCTV sewer surveys"
 version: 3.0.0
 date-released: 2023-06-10
 url: "https://github.com/ehsankazemi47/sewer_defects"

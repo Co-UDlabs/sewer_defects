@@ -1,3 +1,7 @@
+[![Co-UDlabs](https://img.shields.io/badge/Project:-CoUDlabs-brightgreen.svg)](https://co-udlabs.eu/)
+[![License](https://img.shields.io/badge/License:-Academic-blue.svg)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE)
+[![Citation](https://img.shields.io/badge/Acknowledgement:-Cite-yellow)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/CITATION.cff)
+
 # Sewer Defects
 
 This Python project repository focuses on processing CCTV images of sewer pipes and provides multiple functionalities, including automated defect detection, camera calibration, and defect size estimation. The project utilizes the Ultralytics YOLO v8 model for defect detection and provides modules for camera calibration using the 'Checkerboard' and 'Box' methods. It also offers object size estimation by leveraging a reference object in the video.
@@ -50,6 +54,7 @@ sewer_defects/
 | └── nn/
 ├── init.py
 ├── requirements.txt
+├── setup.py
 └── LICENSE
 ```
 
@@ -58,7 +63,7 @@ sewer_defects/
 
 ### 1. Defect Detection
 
-The project utilizes the YOLO v8 model provided by Ultralytics for detecting defects in sewer pipes. This model follows the following steps:
+The project utilizes the YOLO v8 model provided by Ultralytics for detecting defects in sewer pipes (for YOLO see [here](https://github.com/ultralytics/ultralytics)). The model follows these steps:
 
 1.1. **Data collection & labelling**. Collect images of defects in sewer pipes and label them using [YoloLabel](https://github.com/developer0hye/Yolo_Label). [This video](https://drive.google.com/file/d/1CTeDLK8DkOE8SMFm0joFSnadAJ92aY35/view?usp=drive_link) shows how YoloLabel can be used to label defects in CCTV images.
 Create a folder on your computer named something like `data` or `sewer defects data` and store the labeled images and their corresponding label files in a subfolder named `labelled_images`.
@@ -171,4 +176,4 @@ A few sample data are provided in this [Google Drive folder](https://drive.googl
 
 ## License
 
-This project is licensed under the [Co-UDlabs Project](https://co-udlabs.eu/). The license of this repository can be read [here](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE).
+This project is licensed under the [Co-UDlabs Project](https://co-udlabs.eu/). Users are permitted to use, modify, and distribute the codes and data for personal, educational, or commercial purposes and acknowledge the project by [citing this repository](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/CITATION.cff). The full license can be read [here](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE).

@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import os
 import datetime
 
-def predict(data_path, model_path):
+def predict(data_path, model_path, **kwargs):
     
     # load model
     bestModel = YOLO(model_path)
@@ -16,4 +16,4 @@ def predict(data_path, model_path):
         img = os.path.join(data_path,filename)
         if img is not None:
             # get result
-            result = bestModel(img, save=True, project=data_path, name=subfolder_name)
+            result = bestModel(img, project=data_path, name=subfolder_name, **kwargs)

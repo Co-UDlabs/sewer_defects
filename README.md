@@ -1,7 +1,8 @@
 [![Co-UDlabs](https://img.shields.io/badge/Project:-CoUDlabs-blue.svg)](https://co-udlabs.eu/)
 [![License](https://img.shields.io/badge/License:-Academic-brightgreen.svg)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/LICENSE)
 [![Citation](https://img.shields.io/badge/Acknowledgement:-Cite-yellow)](https://github.com/ehsankazemi47/sewer_defects/blob/coudlabs/CITATION.cff)
-[![DOI](https://sandbox.zenodo.org/badge/614934863.svg)](https://sandbox.zenodo.org/badge/latestdoi/614934863)
+[![DOI](https://zenodo.org/badge/614934863.svg)](https://zenodo.org/badge/latestdoi/614934863)
+
 
 # Sewer Defects
 
